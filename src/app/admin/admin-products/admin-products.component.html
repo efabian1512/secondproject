@@ -1,1 +1,38 @@
-<p>admin-products works!</p>
+
+<p><a routerLink="/admin/products/new" class="btn btn-primary">New Product</a></p>
+<p>
+    <input
+    #query
+    (keyup)="filter(query.value)"
+    type="text" 
+    class="form-control"
+    placeholder="Search....">
+</p>
+
+<table class="table table-striped" [svData]="filteredProducts" 
+#sv="svDataTable" [svRowsOnPage]="5"
+ svSortBy="product.payload.node_.children_.root_.right.value.value_" svSortOrder="asc">
+    <thead>
+        <tr>
+            <th>
+            <sv-default-sorter by="product.payload.node_.children_.root_.right.value.value_">Title</sv-default-sorter>
+            </th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of sv.data">
+            <td>{{product.payload.node_.children_.root_.right.value.value_}}</td>
+            <td>{{product.payload.node_.children_.root_.value.value_}}</td>
+            <td><a [routerLink]="['/admin/products', product.key]">Edit</a></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">
+                <sv-bootstrap-paginator [rowsOnPageSet]="[5, 10, 25]"></sv-bootstrap-paginator>
+            </td>
+        </tr>
+        </tfoot>
+</table>
