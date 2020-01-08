@@ -11,11 +11,11 @@
 
 <table class="table table-striped" [svData]="filteredProducts" 
 #sv="svDataTable" [svRowsOnPage]="5"
- svSortBy="product.payload.node_.children_.root_.right.value.value_" svSortOrder="asc">
+  svSortOrder="asc">
     <thead>
         <tr>
-            <th>
-            <sv-default-sorter by="product.payload.node_.children_.root_.right.value.value_">Title</sv-default-sorter>
+            <th class="point" (click)="svSortBy=payload.node_.children_.root_.right.value.value_">
+            <sv-default-sorter  by="payload.node_.children_.root_.right.value.value_">Title</sv-default-sorter>
             </th>
             <th>Price</th>
             <th></th>
