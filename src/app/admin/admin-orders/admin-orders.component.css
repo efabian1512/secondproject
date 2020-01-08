@@ -1,3 +1,18 @@
 .point{
     cursor: pointer;
 }
+
+table{
+    table-layout: fixed;
+    width: 250px;
+}
+
+th, td {
+    border: 1px solid blue;
+    width: 100px;
+    word-wrap: break-word;
+}
+
+.size{
+    width: 330px;
+  }

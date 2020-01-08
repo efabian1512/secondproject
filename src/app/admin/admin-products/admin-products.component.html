@@ -9,16 +9,16 @@
     placeholder="Search....">
 </p>
 
-<table class="table table-striped" [svData]="filteredProducts" 
+<table class="table table-striped table-bordered" [svData]="filteredProducts" 
 #sv="svDataTable" [svRowsOnPage]="5"
   svSortOrder="asc">
     <thead>
         <tr>
-            <th class="point" (click)="svSortBy=payload.node_.children_.root_.right.value.value_">
+            <th class="point" (click)="svSortBy=payload.node_.children_.root_.right.value.value_"><div class="size">
             <sv-default-sorter  by="payload.node_.children_.root_.right.value.value_">Title</sv-default-sorter>
-            </th>
-            <th>Price</th>
-            <th></th>
+        </div></th>
+            <th><div class="size">Price</div></th>
+            <th><div class="size"></div></th>
         </tr>
     </thead>
     <tbody>
