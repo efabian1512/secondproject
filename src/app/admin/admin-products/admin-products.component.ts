@@ -16,12 +16,20 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   products: any[];
   filteredProducts: any[];
   subscription: Subscription;
+  up = true;
+
+  
+  
+
 
   constructor(private productService: ProductService ) {
 
     this.subscription=this.productService.getAll().subscribe(products =>this.filteredProducts = this.products=products);
     //this.productService.getProduct().valueChanges().pipe(map(products=> this.filteredProducts = this.products = products));
    }
+  
+    
+   
 
    filter(query: string){
      this.filteredProducts = (query) ?
