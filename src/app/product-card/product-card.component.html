@@ -1,6 +1,6 @@
 
 
-    <div *ngIf="product.payload.node_.children_.root_.right.value.value_ !='undefined'" class="card">
+    <div *ngIf="product.payload.node_.children_.root_.right.value.value_" class="card">
         <img *ngIf="product.payload.node_.children_.root_.left.value.value_" 
         [src]="product.payload.node_.children_.root_.left.value.value_"  class="card-img-top" 
         alt="product.payload.node_.children_.root_.right.value.value_">
@@ -10,7 +10,9 @@
         
         </div>
         <div class="card-footer">
-            <a *ngIf="showActions" href="#" class="btn btn-primary btn-block ">Add to Cart</a>
+            <button *ngIf="showActions" 
+          class="btn btn-primary btn-block "
+          (click)="addToCart(product)">Add to Cart</button>
         </div>
     
 
