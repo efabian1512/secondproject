@@ -12,17 +12,16 @@ export class AppComponent {
  
   constructor(private usersService: UsersService,private auth: AuthService, private router: Router){
     this.auth.user$.subscribe(user => {
-      if(user){
+      if(!user) return;
          
         this.usersService.save(user);
 
         let returnUrl = localStorage.getItem('returnUrl');
-        this.router.navigateByUrl(returnUrl);
-      }
-     
+        if(!returnUrl) return;
 
-
-    } );
+          localStorage.removeItem('returnUrl');
+          this.router.navigateByUrl(returnUrl);
+        } );
   }
 
  

@@ -1,6 +1,9 @@
 import { Products } from './models/products';
-import { AngularFireDatabase, AngularFireObject, AngularFireList } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireObject, AngularFireList, SnapshotAction } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
+import {map, switchMap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import { Action } from 'rxjs/internal/scheduler/Action';
 
 
 @Injectable({
@@ -8,10 +11,15 @@ import { Injectable } from '@angular/core';
 })
 export class ProductService {
 
+  p: Observable<Products>
+
+  pro: any[];
+
   constructor(private db: AngularFireDatabase) { }
 
   create(product){
     this.db.list('/products').push(product);
+    
   }
 
   getAll(){
@@ -30,7 +38,9 @@ export class ProductService {
     return this.db.object('/products/' + productId).remove();
   }
 
-  getProduct():AngularFireList<Products>{
-    return this.db.list('/products/');
+  getProducts(){
+    return this.db.list('/products/').valueChanges();
   }
+
+ 
 }

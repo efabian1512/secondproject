@@ -23,7 +23,7 @@ export class ProductFormComponent  implements OnDestroy {
     private categoryService: CategoryService, 
     private productService: ProductService
     ) { 
-    this.categories$ = this.categoryService.getCategories() as any;
+    this.categories$ = this.categoryService.getAll() as any;
     this.id= this.route.snapshot.paramMap.get('id');
   if(this.id) this.subscription=this.productService.get(this.id).valueChanges().subscribe(product => this.product = product);
   }
