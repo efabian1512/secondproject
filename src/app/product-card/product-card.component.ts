@@ -12,10 +12,12 @@ export class ProductCardComponent{
   @Input('showActions') showActions=true;
   
 
-  constructor(private cartService: ShoppingCartService) { }
+  constructor(private cartService: ShoppingCartService) {}
 
  
-  addToCart(product){}
+  addToCart(product){
+    this.cartService.addToCart(product);
+  }
       
 
 

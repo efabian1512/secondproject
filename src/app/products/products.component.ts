@@ -1,3 +1,4 @@
+import { ShoppingCartService } from './../shopping-cart.service';
 import { switchMap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Products } from './../models/products';
@@ -20,7 +21,8 @@ export class ProductsComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService, 
+    private productService: ProductService
+  
    
     ) {
       this.productService.getAll().pipe(switchMap(products => { 
@@ -36,7 +38,7 @@ export class ProductsComponent {
       });
       
       
-     
+    
    
 
     

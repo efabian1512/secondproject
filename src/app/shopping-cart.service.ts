@@ -1,11 +1,15 @@
+import { take} from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingCartService {
 
+  private article ={};
+  value1: any={};
   constructor(private db: AngularFireDatabase) { }
 
   private create(){
@@ -15,18 +19,44 @@ export class ShoppingCartService {
   }
 
 private getCart(cartId){
-  return this.db.object('shopping-carts/' + cartId);
+  return this.db.object('/shopping-carts/' + cartId);
 }
 
-private async getOrCreateCart(){
-    let cartId = localStorage.getItem('cardId');
+private async getOrCreateCartId(){
+    let cartId = localStorage.getItem('cartId');
+    if (cartId) return cartId;
 
-      if(!cartId){
-          let result = await this.create();
-          localStorage.setItem('cartId',result.key);
-          return this.getCart(result.key);
-          }
-      return this.getCart(cartId);
+     
+    let result = await this.create();
+    localStorage.setItem('cartId',result.key);
+    return result.key;
+        
+      
+}
+
+async addToCart(product){
+  let cartId = await this.getOrCreateCartId();
+
+
+  let item$ = this.db.object('/shopping-carts/' + cartId + '/items/' + product.payload.key).snapshotChanges();
+  const firebaseItem = this.db.object('/shopping-carts/' + cartId + '/items/' + product.payload.key);
+
+  let product$ = this.db.object('/products/' + product.payload.key).valueChanges();
+
+  product$.pipe(take(1)).subscribe(product => this.article = product);
+
+  item$.pipe(take(1)).subscribe(item => {
+    if(item.payload.exists()) {
+    let itm$ = this.db.object('/shopping-carts/' + cartId + '/items/' + product.payload.key).valueChanges();
+    itm$.pipe(take(1)).subscribe(value => this.value1=value );
+    firebaseItem.update(
+      {product: this.article,
+       quantity: this.value1.quatity + 1});
+      }
+      else { firebaseItem.set({product: this.article, quantity: 1});
+    }
+  });
+
 }
 }
 
