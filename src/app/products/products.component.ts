@@ -1,8 +1,6 @@
-import { ShoppingCartService } from './../shopping-cart.service';
 import { switchMap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Products } from './../models/products';
-import { CategoryService } from './../category.service';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 
@@ -15,9 +13,9 @@ export class ProductsComponent {
 
   
  
-  products : any[] =[];
+  products : Products[] =[];
   category: string;
-  filteredProducts: any[] =[];
+  filteredProducts: Products[] =[];
 
   constructor(
     private route: ActivatedRoute,
@@ -26,13 +24,13 @@ export class ProductsComponent {
    
     ) {
       this.productService.getAll().pipe(switchMap(products => { 
-        this.products = products;
+        products.forEach((product,index) => this.products[index] = product.payload.exportVal());
         return this.route.queryParamMap;
       
       })).subscribe(value =>{
         this.category = value.get('category');
         this.filteredProducts = (this.category) ? 
-        this.products.filter(p => p.payload.node_.children_.root_.left.left.value.value_ === this.category) :
+        this.products.filter(p => p.category === this.category) :
         this.products;
   
       });

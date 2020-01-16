@@ -13,8 +13,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
   products$: AngularFireList<any>;
-  products: any[];
-  filteredProducts: any[];
+  products: Products[] =[];
+  filteredProducts: Products[]=[];
   subscription: Subscription;
   up = true;
 
@@ -24,7 +24,12 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
 
   constructor(private productService: ProductService ) {
 
-    this.subscription=this.productService.getAll().subscribe(products =>this.filteredProducts = this.products=products);
+    this.subscription=this.productService.getAll().subscribe(products => products.
+      forEach((product,index)=> {
+         this.filteredProducts[index] = this.products[index] =product.payload.exportVal();
+         this.filteredProducts[index].key = this.products[index].key = product.key;
+        
+        }));
     //this.productService.getProduct().valueChanges().pipe(map(products=> this.filteredProducts = this.products = products));
    }
   
@@ -33,7 +38,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
 
    filter(query: string){
      this.filteredProducts = (query) ?
-     this.filteredProducts = this.filteredProducts.filter(p=> p.payload.node_.children_.root_.right.value.value_.toLowerCase().includes(query.toLocaleLowerCase())) :
+     this.filteredProducts = this.filteredProducts.filter(p=> p.title.toLowerCase().includes(query.toLocaleLowerCase())) :
      this.products;
    }
  

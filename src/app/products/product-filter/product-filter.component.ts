@@ -1,3 +1,4 @@
+import { switchMap } from 'rxjs/operators';
 import { CategoryService } from './../../category.service';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -16,6 +17,7 @@ export class ProductFilterComponent{
 
   }
 
+ 
  
 
 }

@@ -47,13 +47,12 @@ async addToCart(product){
 
   item$.pipe(take(1)).subscribe(item => {
     if(item.payload.exists()) {
-    let itm$ = this.db.object('/shopping-carts/' + cartId + '/items/' + product.payload.key).valueChanges();
-    itm$.pipe(take(1)).subscribe(value => this.value1=value );
-    firebaseItem.update(
-      {product: this.article,
-       quantity: this.value1.quatity + 1});
-      }
-      else { firebaseItem.set({product: this.article, quantity: 1});
+      firebaseItem.update(
+      {
+       quantity: item.payload.exportVal().quantity + 1});
+       }
+      
+      else { firebaseItem.set({product: product.payload.exportVal(), quantity: 1});
     }
   });
 

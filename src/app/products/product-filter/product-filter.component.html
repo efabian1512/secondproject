@@ -6,12 +6,17 @@
           routerLink="/"
           
         >All Categories</a>
-        <a *ngFor="let c of categories$ | async" 
+        <a *ngFor="let c of categories$ | async"
+        
         routerLink="/"
-        [queryParams]="{category: c.payload.key}"
-        [class.active]="category === c.payload.key"
-        class="list-group-item list-group-item-action">
-            {{c.payload.node_.children_.root_.value.value_}}
+        [queryParams]="{category: c.key}"
+        [class.active]="category === c.key"
+        class="list-group-item list-group-item-action"
+        >
+        <span *ngIf="c.payload.exportVal() as c">
+            {{c.name}}
+        </span>
+          
         </a>
     </div>
 </div>

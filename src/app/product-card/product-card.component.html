@@ -1,12 +1,12 @@
 
 
-    <div *ngIf="product.payload.node_.children_.root_.right.value.value_" class="card">
-        <img *ngIf="product.payload.node_.children_.root_.left.value.value_" 
-        [src]="product.payload.node_.children_.root_.left.value.value_"  class="card-img-top" 
-        alt="product.payload.node_.children_.root_.right.value.value_">
+    <div *ngIf="product.title" class="card">
+        <img *ngIf="product.imageUrl"
+        [src]="product.imageUrl"  class="card-img-top" 
+        alt="product.title">
         <div class="card-body">
-          <h5 class="card-title">{{product.payload.node_.children_.root_.right.value.value_}}</h5>
-          <p class="card-text">{{product.payload.node_.children_.root_.value.value_ | currency: 'USD'}}</p>
+          <h5 class="card-title">{{product.title}}</h5>
+          <p class="card-text">{{product.price | currency: 'USD'}}</p>
         
         </div>
         <div class="card-footer">

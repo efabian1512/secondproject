@@ -2,7 +2,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ProductService } from './../../product.service';
 import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
 import { CategoryService } from './../../category.service';
-import { Component, OnDestroy } from '@angular/core';
+import { Component} from '@angular/core';
 import {take} from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.css']
 })
-export class ProductFormComponent  implements OnDestroy {
+export class ProductFormComponent {
 
   categories$: AngularFireList<any>;
   product = {};
@@ -25,7 +25,8 @@ export class ProductFormComponent  implements OnDestroy {
     ) { 
     this.categories$ = this.categoryService.getAll() as any;
     this.id= this.route.snapshot.paramMap.get('id');
-  if(this.id) this.subscription=this.productService.get(this.id).snapshotChanges().subscribe(product => this.product = product);
+  if(this.id) this.subscription=this.productService.get(this.id).snapshotChanges().
+     pipe(take(1)).subscribe(product => this.product = product.payload.exportVal());
   }
 
   save(product){
@@ -46,9 +47,5 @@ export class ProductFormComponent  implements OnDestroy {
     
   }
  
-  ngOnDestroy() {
-    if(this.subscription)
-    this.subscription.unsubscribe();
-  }
-
+ 
 }
