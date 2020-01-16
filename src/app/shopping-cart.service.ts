@@ -1,3 +1,4 @@
+import { Products } from './models/products';
 import { take} from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
@@ -34,16 +35,12 @@ private async getOrCreateCartId(){
       
 }
 
-async addToCart(product){
+async addToCart(product: Products){
   let cartId = await this.getOrCreateCartId();
 
 
-  let item$ = this.db.object('/shopping-carts/' + cartId + '/items/' + product.payload.key).snapshotChanges();
-  const firebaseItem = this.db.object('/shopping-carts/' + cartId + '/items/' + product.payload.key);
-
-  let product$ = this.db.object('/products/' + product.payload.key).valueChanges();
-
-  product$.pipe(take(1)).subscribe(product => this.article = product);
+  let item$ = this.db.object('/shopping-carts/' + cartId + '/items/' + product.key).snapshotChanges();
+  const firebaseItem = this.db.object('/shopping-carts/' + cartId + '/items/' + product.key);
 
   item$.pipe(take(1)).subscribe(item => {
     if(item.payload.exists()) {
@@ -52,7 +49,7 @@ async addToCart(product){
        quantity: item.payload.exportVal().quantity + 1});
        }
       
-      else { firebaseItem.set({product: product.payload.exportVal(), quantity: 1});
+      else { firebaseItem.set({product: product, quantity: 1});
     }
   });
 

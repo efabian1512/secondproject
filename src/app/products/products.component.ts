@@ -24,7 +24,10 @@ export class ProductsComponent {
    
     ) {
       this.productService.getAll().pipe(switchMap(products => { 
-        products.forEach((product,index) => this.products[index] = product.payload.exportVal());
+        products.forEach((product,index) => {
+          this.products[index] = product.payload.exportVal();
+          this.products[index].key = product.key;
+        });
         return this.route.queryParamMap;
       
       })).subscribe(value =>{
