@@ -4,6 +4,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -34,13 +35,28 @@ private async getOrCreateCartId(){
         
       
 }
+private getItem(cartId, productId){
+ return this.db.object('/shopping-carts/' + cartId + '/items/' + productId).snapshotChanges();
+}
+
+private getFirebaseItem(cartId, productId){
+  return  this.db.object('/shopping-carts/' + cartId + '/items/' + productId);
+}
+
+private articleValue(productId){
+  this.db.object('/products/' + productId ).snapshotChanges()
+  .pipe(take(1)).subscribe(product => this.article = product.payload.exportVal());
+
+}
 
 async addToCart(product: Products){
   let cartId = await this.getOrCreateCartId();
+  
 
+  let item$ = this.getItem(cartId,product.key);
+  const firebaseItem = this.getFirebaseItem(cartId,product.key);
 
-  let item$ = this.db.object('/shopping-carts/' + cartId + '/items/' + product.key).snapshotChanges();
-  const firebaseItem = this.db.object('/shopping-carts/' + cartId + '/items/' + product.key);
+  this.articleValue(product.key);
 
   item$.pipe(take(1)).subscribe(item => {
     if(item.payload.exists()) {
@@ -49,8 +65,9 @@ async addToCart(product: Products){
        quantity: item.payload.exportVal().quantity + 1});
        }
       
-      else { firebaseItem.set({product: product, quantity: 1});
-    }
+      else { 
+        firebaseItem.set({product: this.article , quantity: 1});
+           }
   });
 
 }
