@@ -1,5 +1,5 @@
 import { ShoppingCart } from './models/shopping-cart';
-import { Products } from './models/products';
+import { Product } from './models/products';
 import { take, map } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
@@ -54,16 +54,16 @@ private articleValue(productId){
 
 }
 
-async addToCart(product: Products){
+async addToCart(product: Product){
   this.updateItemQuantity(product, 1);
 
 }
 
- async removeFromCart(product: Products){
+ async removeFromCart(product: Product){
   this.updateItemQuantity(product, -1);
      
  }
-private async updateItemQuantity(product: Products, change: number){
+private async updateItemQuantity(product: Product, change: number){
 
   let cartId = await this.getOrCreateCartId();
   

@@ -1,4 +1,4 @@
-export interface Products{
+export interface Product{
  
     key: string;
     category: string;

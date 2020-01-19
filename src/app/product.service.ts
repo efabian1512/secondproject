@@ -1,4 +1,4 @@
-import { Products } from './models/products';
+import { Product } from './models/products';
 import { AngularFireDatabase, AngularFireObject, AngularFireList, SnapshotAction } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 import {map, switchMap} from 'rxjs/operators';
@@ -11,9 +11,7 @@ import { Action } from 'rxjs/internal/scheduler/Action';
 })
 export class ProductService {
 
-  p: Observable<Products>
-
-  pro: any[];
+  
 
   constructor(private db: AngularFireDatabase) { }
 

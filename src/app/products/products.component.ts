@@ -1,7 +1,7 @@
 import { ShoppingCartService } from './../shopping-cart.service';
 import { switchMap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-import { Products } from './../models/products';
+import { Product } from './../models/products';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from '../product.service';
 import {Subscription} from 'rxjs';
@@ -15,9 +15,9 @@ export class ProductsComponent implements OnInit, OnDestroy  {
 
   
  
-  products : Products[] =[];
+  products : Product[] =[];
   category: string;
-  filteredProducts: Products[] =[];
+  filteredProducts: Product[] =[];
   cart: any;
   subscription: Subscription;
   

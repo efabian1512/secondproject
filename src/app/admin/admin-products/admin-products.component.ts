@@ -1,5 +1,5 @@
 import { switchMap, map } from 'rxjs/operators';
-import { Products } from './../../models/products';
+import { Product } from './../../models/products';
 import { Subscription } from 'rxjs';
 import { AngularFireList } from '@angular/fire/database';
 import { ProductService } from './../../product.service';
@@ -13,8 +13,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
   products$: AngularFireList<any>;
-  products: Products[] =[];
-  filteredProducts: Products[]=[];
+  products: Product[] =[];
+  filteredProducts: Product[]=[];
   subscription: Subscription;
   up = true;
 
