@@ -1,7 +1,9 @@
+import { ShoppingCart } from './models/shopping-cart';
 import { Products } from './models/products';
-import { take} from 'rxjs/operators';
+import { take, map } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
+import {Observable} from 'rxjs';
 
 
 
@@ -11,7 +13,7 @@ import { Injectable } from '@angular/core';
 export class ShoppingCartService {
 
   private article ={};
-  value1: any={};
+
   constructor(private db: AngularFireDatabase) { }
 
   private create(){
@@ -20,11 +22,13 @@ export class ShoppingCartService {
     });
   }
 
-private getCart(cartId){
-  return this.db.object('/shopping-carts/' + cartId);
+   async getCart():Promise<Observable<ShoppingCart>>{
+    let cartId = await this.getOrCreateCartId();
+    return this.db.object('/shopping-carts/' + cartId).snapshotChanges().
+    pipe(map(x => new ShoppingCart(x.payload.exportVal().items)));
 }
 
-private async getOrCreateCartId(){
+private async getOrCreateCartId() :Promise<string>{
     let cartId = localStorage.getItem('cartId');
     if (cartId) return cartId;
 
@@ -37,6 +41,7 @@ private async getOrCreateCartId(){
 }
 private getItem(cartId, productId){
  return this.db.object('/shopping-carts/' + cartId + '/items/' + productId).snapshotChanges();
+ 
 }
 
 private getFirebaseItem(cartId, productId){
@@ -50,6 +55,16 @@ private articleValue(productId){
 }
 
 async addToCart(product: Products){
+  this.updateItemQuantity(product, 1);
+
+}
+
+ async removeFromCart(product: Products){
+  this.updateItemQuantity(product, -1);
+     
+ }
+private async updateItemQuantity(product: Products, change: number){
+
   let cartId = await this.getOrCreateCartId();
   
 
@@ -59,10 +74,12 @@ async addToCart(product: Products){
   this.articleValue(product.key);
 
   item$.pipe(take(1)).subscribe(item => {
-    if(item.payload.exists()) {firebaseItem.update({quantity: item.payload.exportVal().quantity + 1});}
-    else {firebaseItem.set({product: this.article , quantity: 1});}
+    if(item.payload.exists()) {firebaseItem.update({quantity: item.payload.exportVal().quantity + change});}
+    else {firebaseItem.set({product: this.article , quantity: change});}
   });
+  
 }
+
 }
 
 
