@@ -55,15 +55,15 @@ private articleValue(productId){
 }
 
 async addToCart(product: Product){
-  this.updateItemQuantity(product, 1);
+  this.updateItem(product, 1);
 
 }
 
  async removeFromCart(product: Product){
-  this.updateItemQuantity(product, -1);
+  this.updateItem(product, -1);
      
  }
-private async updateItemQuantity(product: Product, change: number){
+private async updateItem(product: Product, change: number){
 
   let cartId = await this.getOrCreateCartId();
   
@@ -75,7 +75,13 @@ private async updateItemQuantity(product: Product, change: number){
 
   item$.pipe(take(1)).subscribe(item => {
     if(item.payload.exists()) {firebaseItem.update({quantity: item.payload.exportVal().quantity + change});}
-    else {firebaseItem.set({product: this.article , quantity: change});}
+    else {firebaseItem.set(
+      { 
+        title: product.title,
+        imageUrl: product.imageUrl,
+        price: product.price
+        ,quantity: change}
+      );}
   });
   
 }
