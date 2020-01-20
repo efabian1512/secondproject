@@ -14,12 +14,15 @@ export class ProductQuantityComponent {
   @Input('shopping-cart') shoppingCart: ShoppingCart;
   
 
-  constructor(private cartService: ShoppingCartService) {}
+  constructor(private cartService: ShoppingCartService) {
+  
+  }
 
   
  
   addToCart(){
     this.cartService.addToCart(this.product);
+    
   }
 
   removeFromCart(){
@@ -27,3 +30,4 @@ export class ProductQuantityComponent {
   }
   
 }
+

@@ -20,5 +20,6 @@ export class ProductCardComponent{
  
   addToCart(){
     this.cartService.addToCart(this.product);
+   console.log( this.shoppingCart.getQuantity(this.product));
   }
 }

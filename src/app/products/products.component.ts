@@ -1,3 +1,4 @@
+import { ShoppingCart } from './../models/shopping-cart';
 import { ShoppingCartService } from './../shopping-cart.service';
 import { switchMap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
@@ -18,7 +19,7 @@ export class ProductsComponent implements OnInit, OnDestroy  {
   products : Product[] =[];
   category: string;
   filteredProducts: Product[] =[];
-  cart: any;
+  cart: ShoppingCart;
   subscription: Subscription;
   
   constructor(
@@ -28,12 +29,13 @@ export class ProductsComponent implements OnInit, OnDestroy  {
   
    
     ) {
-      this.cartService
+      
 
       this.productService.getAll().pipe(switchMap(products => { 
         products.forEach((product,index) => {
           this.products[index] = product.payload.exportVal();
           this.products[index].key = product.key;
+          
         });
         return this.route.queryParamMap;
       
@@ -42,6 +44,7 @@ export class ProductsComponent implements OnInit, OnDestroy  {
         this.filteredProducts = (this.category) ? 
         this.products.filter(p => p.category === this.category) :
         this.products;
+        
        });
       }
 

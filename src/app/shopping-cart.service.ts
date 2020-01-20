@@ -48,12 +48,6 @@ private getFirebaseItem(cartId, productId){
   return  this.db.object('/shopping-carts/' + cartId + '/items/' + productId);
 }
 
-private articleValue(productId){
-  this.db.object('/products/' + productId ).snapshotChanges()
-  .pipe(take(1)).subscribe(product => this.article = product.payload.exportVal());
-
-}
-
 async addToCart(product: Product){
   this.updateItem(product, 1);
 
@@ -71,7 +65,6 @@ private async updateItem(product: Product, change: number){
   let item$ = this.getItem(cartId,product.key);
   const firebaseItem = this.getFirebaseItem(cartId,product.key);
 
-  this.articleValue(product.key);
 
   item$.pipe(take(1)).subscribe(item => {
     if(item.payload.exists()) {firebaseItem.update({quantity: item.payload.exportVal().quantity + change});}
