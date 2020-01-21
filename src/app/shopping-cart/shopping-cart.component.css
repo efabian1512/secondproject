@@ -12,3 +12,7 @@
     border-radius:100%;
     background-size: cover;
 }
+
+.right{
+    float: right;
+}
