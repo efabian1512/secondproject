@@ -1,9 +1,11 @@
+import { ShoppingCartItem } from './models/shopping-cart-item';
 import { ShoppingCart } from './models/shopping-cart';
 import { Product } from './models/products';
 import { take, map } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
+
 
 
 
@@ -40,7 +42,7 @@ export class ShoppingCartService {
    
 
   private create(){
-    return this.db.list<any>('/shopping-carts').push({
+    return this.db.list('/shopping-carts').push({
       dateCreated: new Date().getTime()
     });
   }
@@ -57,12 +59,13 @@ export class ShoppingCartService {
       
 }
 private getItem(cartId, productId){
- return this.db.object('/shopping-carts/' + cartId + '/items/' + productId).snapshotChanges();
+ return this.db.object<any>('/shopping-carts/' + cartId + '/items/' + productId).snapshotChanges()
+ .pipe(map(item => item));
  
 }
 
 private getFirebaseItem(cartId, productId){
-  return  this.db.object('/shopping-carts/' + cartId + '/items/' + productId);
+  return  this.db.object<any>('/shopping-carts/' + cartId + '/items/' + productId);
 }
 
 private async updateItem(product: Product, change: number){
@@ -71,18 +74,22 @@ private async updateItem(product: Product, change: number){
   
 
   let item$ = this.getItem(cartId,product.key);
-  const firebaseItem = this.getFirebaseItem(cartId,product.key);
+  let firebaseItem = this.getFirebaseItem(cartId,product.key);
 
 
   item$.pipe(take(1)).subscribe(item => {
-    if(item.payload.exists()) {firebaseItem.update({quantity: item.payload.exportVal().quantity + change});}
-    else {firebaseItem.set(
-      { 
+    
+    let itemObject = item.payload.exportVal() || 0; 
+    let quantity = (itemObject.quantity || 0) + change;
+    if(quantity===0) firebaseItem.remove();
+    else
+    firebaseItem.update({
+     
         title: product.title,
         imageUrl: product.imageUrl,
         price: product.price
-        ,quantity: change}
-      );}
+        ,quantity: quantity
+      });
   });
   
 }
