@@ -13,6 +13,7 @@ import {Observable} from 'rxjs';
 export class ShoppingCartService {
 
   private article ={};
+  
 
   constructor(private db: AngularFireDatabase) { }
 
@@ -24,23 +25,22 @@ export class ShoppingCartService {
 
    async addToCart(product: Product){
     this.updateItem(product, 1);
-  
-  }
+   }
   
    async removeFromCart(product: Product){
     this.updateItem(product, -1);
-       
-   }
+      }
 
    async clearCart(){
     let cartId = await this.getOrCreateCartId();
-        //this.db.object('/shopping-carts/'+cartId+'/items/').remove();
-        let reference =this.db.database.ref('/shopping-carts/').child(cartId+'/items');
-        reference.child('/').remove();
-   } 
+        this.db.object('/shopping-carts/'+cartId+'/items').remove();
+   }
+
+   
+   
 
   private create(){
-    return this.db.list('/shopping-carts').push({
+    return this.db.list<any>('/shopping-carts').push({
       dateCreated: new Date().getTime()
     });
   }
@@ -88,7 +88,6 @@ private async updateItem(product: Product, change: number){
 }
 
 }
-
 
 
 
