@@ -35,8 +35,8 @@ export class ShoppingCartService {
    async clearCart(){
     let cartId = await this.getOrCreateCartId();
         //this.db.object('/shopping-carts/'+cartId+'/items/').remove();
-        this.db.database.ref('/shopping-carts/').child(cartId).remove();
-   }
+        let reference =this.db.database.ref('/shopping-carts/').child(cartId).child('/items').ref.remove();
+   } 
 
   private create(){
     return this.db.list('/shopping-carts').push({
