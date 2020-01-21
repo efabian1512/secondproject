@@ -36,7 +36,7 @@ export class ShoppingCartService {
     let cartId = await this.getOrCreateCartId();
         //this.db.object('/shopping-carts/'+cartId+'/items/').remove();
         let reference =this.db.database.ref('/shopping-carts/').child(cartId+'/items');
-        console.log(reference);
+        reference.child('/').remove();
    } 
 
   private create(){
