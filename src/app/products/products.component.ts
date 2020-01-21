@@ -5,22 +5,22 @@ import { ActivatedRoute } from '@angular/router';
 import { Product } from './../models/products';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from '../product.service';
-import {Subscription} from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit, OnDestroy  {
+export class ProductsComponent implements OnInit {
 
   
  
   products : Product[] =[];
   category: string;
   filteredProducts: Product[] =[];
-  cart: ShoppingCart;
-  subscription: Subscription;
+  cart$: Observable<ShoppingCart>;
+ 
   
   constructor(
     private route: ActivatedRoute,
@@ -31,6 +31,16 @@ export class ProductsComponent implements OnInit, OnDestroy  {
     ) {
       
 
+      
+      }
+
+      async ngOnInit(){
+         this.cart$ = await this.cartService.getCart();
+        this.populateProducts();
+         
+      }
+
+     private populateProducts(){
       this.productService.getAll().pipe(switchMap(products => { 
         products.forEach((product,index) => {
           this.products[index] = product.payload.exportVal();
@@ -41,20 +51,15 @@ export class ProductsComponent implements OnInit, OnDestroy  {
       
       })).subscribe(value =>{
         this.category = value.get('category');
-        this.filteredProducts = (this.category) ? 
-        this.products.filter(p => p.category === this.category) :
-        this.products;
-        
+        this.applyFilter();
        });
-      }
+     } 
 
-      async ngOnInit(){
-         this.subscription = (await this.cartService.getCart()).subscribe(cart => this.cart = cart);
-      }
-
-      ngOnDestroy(){
-        this.subscription.unsubscribe();
-      }
+     private applyFilter(){
+      this.filteredProducts = (this.category) ? 
+      this.products.filter(p => p.category === this.category) :
+      this.products;
+     }
  
 
 }
