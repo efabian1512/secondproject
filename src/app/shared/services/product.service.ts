@@ -1,4 +1,4 @@
-import { Product } from './models/products';
+import { Product } from '../models/products';
 import { AngularFireDatabase, AngularFireObject, AngularFireList, SnapshotAction } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 import {map, switchMap} from 'rxjs/operators';

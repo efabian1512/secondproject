@@ -1,7 +1,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { ProductService } from './../../product.service';
+import { ProductService } from '../../shared/services/product.service';
 import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
-import { CategoryService } from './../../category.service';
+import { CategoryService } from '../../shared/services/category.service';
 import { Component} from '@angular/core';
 import {take} from 'rxjs/operators';
 import { Subscription } from 'rxjs';

@@ -1,10 +1,10 @@
-import { OrderService } from './order.service';
-import { ShoppingCartService } from './shopping-cart.service';
-import { ProductService } from './product.service';
-import { CategoryService } from './category.service';
+import { OrderService } from './shared/services/order.service';
+import { ShoppingCartService } from './shared/services/shopping-cart.service';
+import { ProductService } from './shared/services/product.service';
+import { CategoryService } from './shared/services/category.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
-import { UsersService } from './users.service';
-import { AuthService } from './auth.service';
+import { UsersService } from './shared/services/users.service';
+import { AuthService } from './shared/services/auth.service';
 import { RouterModule } from '@angular/router';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,14 +25,14 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { AuthGuard } from './auth-guard.service';
+import { AuthGuard } from './shared/services/auth-guard.service';
 import { AdminAuthGuard } from './admin-auth-guard.service';
 import { FormsModule } from '@angular/forms';
 import {CustomFormsModule} from 'ng2-validation';
 import { DataTableModule } from 'ng-angular8-datatable';
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
-import { ProductCardComponent } from './product-card/product-card.component';
-import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+import { ProductCardComponent } from './shared/components/product-card/product-card.component';
+import { ProductQuantityComponent } from './shared/components/product-quantity/product-quantity.component';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 

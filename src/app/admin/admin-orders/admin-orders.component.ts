@@ -1,5 +1,5 @@
 import { Subscription } from 'rxjs';
-import { OrderService } from './../../order.service';
+import { OrderService } from '../../shared/services/order.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
