@@ -36,9 +36,4 @@ export class ProductService {
     return this.db.object('/products/' + productId).remove();
   }
 
-  getProducts(){
-    return this.db.list('/products/').valueChanges();
-  }
-
- 
 }

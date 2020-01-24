@@ -1,9 +1,8 @@
-import { switchMap, map } from 'rxjs/operators';
-import { Product } from '../../shared/models/products';
-import { Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFireList } from '@angular/fire/database';
-import { ProductService } from '../../shared/services/product.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Product } from 'shared/models/products';
+import { ProductService } from 'shared/services/product.service';
 
 
 @Component({

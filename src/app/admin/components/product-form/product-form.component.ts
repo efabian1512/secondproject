@@ -1,10 +1,10 @@
-import { Router, ActivatedRoute } from '@angular/router';
-import { ProductService } from '../../shared/services/product.service';
-import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
-import { CategoryService } from '../../shared/services/category.service';
-import { Component} from '@angular/core';
-import {take} from 'rxjs/operators';
+import { Component } from '@angular/core';
+import { AngularFireList } from '@angular/fire/database';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { CategoryService } from 'shared/services/category.service';
+import { ProductService } from 'shared/services/product.service';
 
 @Component({
   selector: 'app-product-form',
