@@ -5,3 +5,11 @@
 .logout{
     cursor: pointer;
 }
+
+.fa-shopping-cart{
+  color: #8C898A; 
+}
+
+.fa-shopping-cart:hover{
+ color: #3d3d29;
+}

@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DataTableModule } from 'ng-angular8-datatable';
+import { CustomFormsModule } from 'ng2-validation';
 import { ProductService } from 'shared/services/product.service';
 
 import { ProductCardComponent } from './components/product-card/product-card.component';
@@ -19,9 +25,25 @@ import { UsersService } from './services/users.service';
     ProductCardComponent,
     ProductQuantityComponent
   ],
+  imports: [
+    CommonModule,
+    DataTableModule,
+    NgbModule,
+    FormsModule,
+    CustomFormsModule,
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
+  ],
   exports: [
     ProductCardComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    CommonModule,
+    DataTableModule,
+    NgbModule,
+    FormsModule,
+    CustomFormsModule,
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
   ],
   providers:[
     AuthService,
@@ -31,9 +53,7 @@ import { UsersService } from './services/users.service';
     ProductService, 
     ShoppingCartService,
     OrderService
-  ],
-  imports: [
-    CommonModule
   ]
+ 
 })
 export class SharedModule { }
