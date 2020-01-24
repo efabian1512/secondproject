@@ -1,4 +1,5 @@
-import { ShoppingModule } from './shopping/shopping.module';
+import { CoreModule } from './core/core.module';
+import { ShoppingModule } from './shoppingcart/shopping.module';
 
 
 import { CheckOutComponent } from './shoppingcart/components/check-out/check-out.component';
@@ -19,10 +20,10 @@ import { CustomFormsModule } from 'ng2-validation';
 import { environment } from './../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
+import { BsNavbarComponent } from './core/components/bs-navbar/bs-navbar.component';
 
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './core/components/home/home.component';
+import { LoginComponent } from './core/components/login/login.component';
 import { MyOrdersComponent } from './shoppingcart/components/my-orders/my-orders.component';
 import { OrderSuccessComponent } from './shoppingcart/components/order-success/order-success.component';
 import { ProductFilterComponent } from './shoppingcart/components/products/product-filter/product-filter.component';
@@ -39,18 +40,14 @@ import { ShoppingCartComponent } from './shoppingcart/components/shopping-cart/s
 @NgModule({
   declarations: [
     AppComponent,
-    BsNavbarComponent,
-    HomeComponent,
-    LoginComponent
-    
   
-    
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AdminModule,
     SharedModule,
+    CoreModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
