@@ -1,3 +1,4 @@
+import { ShoppingModule } from './shopping/shopping.module';
 
 
 import { CheckOutComponent } from './shoppingcart/components/check-out/check-out.component';
@@ -16,10 +17,6 @@ import { DataTableModule } from 'ng-angular8-datatable';
 import { CustomFormsModule } from 'ng2-validation';
 
 import { environment } from './../environments/environment';
-import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
-import { AdminOrdersComponent } from './admin/components/admin-orders/admin-orders.component';
-import { AdminProductsComponent } from './admin/components/admin-products/admin-products.component';
-import { ProductFormComponent } from './admin/components/product-form/product-form.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
@@ -44,15 +41,9 @@ import { ShoppingCartComponent } from './shoppingcart/components/shopping-cart/s
     AppComponent,
     BsNavbarComponent,
     HomeComponent,
-    ProductsComponent,
-    ShoppingCartComponent,
-    CheckOutComponent,
-    OrderSuccessComponent,
-    MyOrdersComponent,
-    LoginComponent,
-    ProductFilterComponent,
-    ShoppingCartSummaryComponent,
-    ShippingFormComponent,
+    LoginComponent
+    
+  
     
   ],
   imports: [
@@ -67,20 +58,11 @@ import { ShoppingCartComponent } from './shoppingcart/components/shopping-cart/s
     CustomFormsModule,
     DataTableModule,
     NgbModule,
+    ShoppingModule,
     RouterModule.forRoot([
       {path:'', component: ProductsComponent},
-      {path:'products', component: ProductsComponent},
-      {path:'shopping-cart', component: ShoppingCartComponent},
       {path:'login', component: LoginComponent},
-
-      {path:'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
-      {path:'order-success/:id', component: OrderSuccessComponent, canActivate: [AuthGuard]},
-      {path:'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard]},
-
-      /*{path:'admin/products/new', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
-      {path:'admin/products/:id', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
-      {path:'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard]},
-      {path:'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard]}*/
+     
      
     ])
     
