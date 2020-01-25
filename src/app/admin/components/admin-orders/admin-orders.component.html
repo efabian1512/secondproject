@@ -10,7 +10,7 @@
      <tr *ngFor="let order of orders">
         <td>{{order.shipping.name}}</td>
         <td>{{order.datePlaced | date: 'longDate'}}</td>
-        <td><a href="#">View</a></td>
+        <td><a routerLink="">View</a></td>
     </tr>
     </tbody>
         

@@ -20,8 +20,13 @@ export class OrderService {
   getOrders(){
     return this.db.list('/orders').snapshotChanges()
     
+
   }
 
+  getASingleOrder(orderId: string){
+    return this.db.object('/orders/'+orderId).snapshotChanges();
+  
+  }
   getOrdersByUser(userId: string){
     
     return this.db.list('/orders',(ref => ref.orderByChild('userId').equalTo(userId))).snapshotChanges();

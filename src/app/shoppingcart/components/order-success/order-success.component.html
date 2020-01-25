@@ -1,1 +1,13 @@
-<p>order-success works!</p>
+<div class="card">
+    <div class="card-body">
+     <h1>Your order was successfully placed!!!</h1>
+     <br/>
+     <br/>
+     <a 
+     routerLink="/products"
+     >Go to home page.</a> &nbsp;
+     <a 
+     [routerLink]="['/order/detail',id]"
+     >View order details.</a>
+    </div>
+  </div>

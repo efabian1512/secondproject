@@ -1,3 +1,6 @@
+import { take } from 'rxjs/operators';
+import { OrderService } from './../../../shared/services/order.service';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderSuccessComponent implements OnInit {
 
-  constructor() { }
+  id: string;
+  order = {};
+  constructor(
+    private route: ActivatedRoute,
+    private orderService: OrderService
+    ) { }
 
   ngOnInit() {
+
+    this.id =this.route.snapshot.paramMap.get('id');
+
+    
+    //this.orderService.getASingleOrder(this.id).pipe(take(1)).subscribe(order => this.order = order.payload.exportVal());
+
   }
 
 }
