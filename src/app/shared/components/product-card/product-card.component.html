@@ -1,6 +1,6 @@
 
 
-    <div *ngIf="product.title" class="card">
+ <div *ngIf="product.title" [class.card]="showActions" [class.card2]="!showActions">
         <img *ngIf="product.imageUrl"
         [src]="product.imageUrl"  class="card-img-top" 
         alt="product.title">

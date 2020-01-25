@@ -23,3 +23,25 @@
     cursor: pointer;
     
   }
+
+  .card2 {
+    position: relative;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+  }
+
+  .card2 ._ngcontent-kst-c3 {
+    margin-bottom: 30px;
+    width: 80%;
+    margin-left: auto;
+}
+

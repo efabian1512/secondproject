@@ -13,3 +13,19 @@
 .fa-shopping-cart:hover{
  color: #3d3d29;
 }
+
+.weigth{
+  width: -40px;
+  padding: 0;
+  left: -20%;
+}
+.dropdown-item{
+  padding: 0.25rem 4.5rem;
+  
+}
+
+
+.navbar-expand-md .navbar-nav .nav-link {
+    padding-right: 5.5rem;
+    padding-left: 0.5rem;
+}
