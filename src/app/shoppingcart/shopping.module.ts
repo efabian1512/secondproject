@@ -36,7 +36,7 @@ import { SharedModule } from '../shared/shared.module';
 
       {path:'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
       {path:'order-success/:id', component: OrderSuccessComponent, canActivate: [AuthGuard]},
-      {path:'order/detail:id', component: OrderDetailsComponent, canActivate: [AuthGuard]},
+      {path:'order-detail/:id', component: OrderDetailsComponent, canActivate: [AuthGuard]},
       {path:'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard]}
 
     ])

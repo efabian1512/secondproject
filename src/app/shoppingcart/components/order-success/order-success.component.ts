@@ -22,7 +22,7 @@ export class OrderSuccessComponent implements OnInit {
     this.id =this.route.snapshot.paramMap.get('id');
 
     
-    //this.orderService.getASingleOrder(this.id).pipe(take(1)).subscribe(order => this.order = order.payload.exportVal());
+    
 
   }
 

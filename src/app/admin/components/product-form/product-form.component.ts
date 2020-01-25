@@ -15,7 +15,6 @@ export class ProductFormComponent {
 
   categories$: AngularFireList<any>;
   product = {};
-  subscription: Subscription;
   id;
   constructor(
     private route: ActivatedRoute,
@@ -25,7 +24,7 @@ export class ProductFormComponent {
     ) { 
     this.categories$ = this.categoryService.getAll() as any;
     this.id= this.route.snapshot.paramMap.get('id');
-  if(this.id) this.subscription=this.productService.get(this.id).snapshotChanges().
+  if(this.id) this.productService.get(this.id).snapshotChanges().
      pipe(take(1)).subscribe(product => this.product = product.payload.exportVal());
   }
 
