@@ -1,7 +1,9 @@
+
 import { ShoppingCartService } from './shopping-cart.service';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 import {map} from 'rxjs/operators';
+import { PlacedOrder } from 'shared/models/placed-order';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +26,10 @@ export class OrderService {
   }
 
   getASingleOrder(orderId: string){
-    return this.db.object('/orders/'+orderId).snapshotChanges();
+    return this.db.object('/orders/'+orderId)
+    .snapshotChanges().pipe(map(order =>{ 
+     return new PlacedOrder(order.payload.exportVal());
+    }));
   
   }
   getOrdersByUser(userId: string){

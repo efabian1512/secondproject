@@ -12,19 +12,29 @@ export class OrderDetailsComponent implements OnInit {
 
   
   order ={};
+  
   constructor(
     private route: ActivatedRoute,
     private orderService: OrderService
+  
     ) { 
 
   
   }
 
-  ngOnInit() {
+async ngOnInit() {
+
+
     let id = this.route.snapshot.paramMap.get('id');
 
     if(id) this.orderService.getASingleOrder(id).pipe(take(1))
-    .subscribe(order => {let orderObject = order.payload.exportVal() || {}; this.order = orderObject.shipping });
+    .subscribe(order => {
+      this.order =  order;
+    
+
+     
+     
+    });
 
   
   }

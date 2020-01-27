@@ -2,11 +2,22 @@
     <div class="card-body">
       <h4 class="card-title">Order Detail</h4>
      
-      <p class="card-text">
+      <div class="card-text">
           <span class="bold">Customer:</span>&nbsp;
-            <span>{{order.name}}</span>
+          <span *ngIf="order.shipping as shipping">{{shipping.name}}</span><br/>
+            <span>{{order.datePlaced | date:'longDate'}}</span><br/>
+
+            <ul>
+              <li *ngFor="let item of order.orderItems">
+                <span *ngIf="item.product as product">{{product.title}}</span>
+              </li>
+            </ul>
+       
+            
+      </div>
+           
           
-      </p>
+    
       <a href="#" class="card-link">Card link</a>
       <a href="#" class="card-link">Another link</a>
     </div>
