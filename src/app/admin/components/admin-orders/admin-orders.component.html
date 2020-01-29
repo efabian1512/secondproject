@@ -7,10 +7,10 @@
         </tr>
     </thead>
     <tbody>
-     <tr *ngFor="let order of orders">
+     <tr *ngFor="let order of orders; index as i">
         <td>{{order.shipping.name}}</td>
         <td>{{order.datePlaced | date: 'longDate'}}</td>
-        <td><a routerLink="">View</a></td>
+        <td><a [routerLink]="['/order-detail',keys[i]]">View Details</a></td>
     </tr>
     </tbody>
         

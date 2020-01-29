@@ -2,6 +2,7 @@ import { AuthService } from '../../../shared/services/auth.service';
 import { Subscription } from 'rxjs';
 import { OrderService } from '../../../shared/services/order.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { PlacedOrder } from 'shared/models/placed-order';
 
 @Component({
   selector: 'app-my-orders',
@@ -10,7 +11,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class MyOrdersComponent implements OnInit, OnDestroy {
 
-  orders: any[] = [];
+  orders: PlacedOrder[] = [];
   ordersSusbcription:Subscription;
   userSusbcription:Subscription;
   keys: any[] =[];

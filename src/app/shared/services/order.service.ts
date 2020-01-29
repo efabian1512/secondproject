@@ -20,7 +20,8 @@ export class OrderService {
   }
 
   getOrders(){
-    return this.db.list('/orders').snapshotChanges()
+    return this.db.list('/orders').snapshotChanges();
+  
     
 
   }
@@ -28,7 +29,7 @@ export class OrderService {
   getASingleOrder(orderId: string){
     return this.db.object('/orders/'+orderId)
     .snapshotChanges().pipe(map(order =>{ 
-     return new PlacedOrder(order.payload.exportVal());
+     return new PlacedOrder(order.payload.exportVal(),order.key);
     }));
   
   }

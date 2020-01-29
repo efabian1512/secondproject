@@ -12,7 +12,7 @@ export class PlacedOrder{
      
      orderItems: ItemPlacedInOrder[] =[];
 
-    constructor(private placedOrder?){
+    constructor(private placedOrder?,private orderId?){
         this.placedOrder = placedOrder || {};
         
         this._datePlaced = this.placedOrder.datePlaced;
@@ -38,6 +38,19 @@ export class PlacedOrder{
     }
 
 
+    get totalPrice(){
+        let items = this.placedOrder.items || {};
+        let total =0;
+        for(let item in items){
+
+            total += items[item].totalPrice;
+
+        }
+
+        return total;
+
+        
+    }
 
     get datePlaced(){
         return this._datePlaced;

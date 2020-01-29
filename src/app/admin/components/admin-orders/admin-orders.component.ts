@@ -2,6 +2,7 @@ import { OrderService } from 'shared/services/order.service';
 import { Subscription } from 'rxjs';
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { PlacedOrder } from 'shared/models/placed-order';
 
 @Component({
   selector: 'app-admin-orders',
@@ -9,7 +10,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./admin-orders.component.css']
 })
 export class AdminOrdersComponent implements OnInit,OnDestroy {
- orders:any[]=[];
+ orders:PlacedOrder[]=[];
  keys:any[]=[];
  susbcription:Subscription;
 
