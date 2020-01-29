@@ -12,7 +12,8 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { ProductsComponent } from './shoppingcart/components/products/products.component';
 import { ShoppingModule } from './shoppingcart/shopping.module';
-import { OrderDetailsComponent } from './shoppingcart/components/order-details/order-details.component';
+
+
 
 
 
@@ -22,7 +23,8 @@ import { OrderDetailsComponent } from './shoppingcart/components/order-details/o
 @NgModule({
   declarations: [
     AppComponent,
-    OrderDetailsComponent,
+ 
+   
   
   ],
   imports: [

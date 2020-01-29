@@ -1,3 +1,4 @@
+
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
 import { NgModule } from '@angular/core';
@@ -25,7 +26,8 @@ import { SharedModule } from '../shared/shared.module';
     MyOrdersComponent,
     ProductFilterComponent,
     ShoppingCartSummaryComponent,
-    ShippingFormComponent
+    ShippingFormComponent,
+    OrderDetailsComponent
   ],
   imports: [
     SharedModule,
@@ -42,5 +44,6 @@ import { SharedModule } from '../shared/shared.module';
     ])
     
   ]
+  
 })
 export class ShoppingModule { }

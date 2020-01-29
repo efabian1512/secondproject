@@ -1,0 +1,25 @@
+<table class="table table-bordered" [svData]="orders" 
+#sv="svDataTable" [svRowsOnPage]="10" 
+svSortOrder="asc">
+    <thead>
+        <tr>
+            <th>Customer</th>
+            <th>Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let order of sv.data; index as i">
+            <td>{{order.shipping.name}}</td>
+            <td>{{order.datePlaced | date:'longDate'}}</td>
+            <td><a [routerLink]="['/order-detail',keys[i]]">View Details</a></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">
+                <sv-bootstrap-paginator [rowsOnPageSet]="[5, 10, 25]"></sv-bootstrap-paginator>
+            </td>
+        </tr>
+        </tfoot>
+</table>

@@ -1,3 +1,5 @@
+import { RouterModule } from '@angular/router';
+import { ShowOrdersComponent } from 'shared/show-orders/show-orders.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -23,7 +25,8 @@ import { UsersService } from './services/users.service';
 @NgModule({
   declarations: [
     ProductCardComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    ShowOrdersComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +35,9 @@ import { UsersService } from './services/users.service';
     FormsModule,
     CustomFormsModule,
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    RouterModule
+   
   ],
   exports: [
     ProductCardComponent,
@@ -44,6 +49,7 @@ import { UsersService } from './services/users.service';
     CustomFormsModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    ShowOrdersComponent
   ],
   providers:[
     AuthService,

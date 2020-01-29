@@ -1,0 +1,18 @@
+th{
+    width:200px;
+    /*padding-bottom:10px;*/
+    
+}
+
+td{
+  width: 200px;
+}
+
+.tt > th{
+    width:0;
+    padding:0;
+}
+
+i{
+    float:right;
+}
