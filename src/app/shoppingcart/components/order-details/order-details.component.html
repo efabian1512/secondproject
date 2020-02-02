@@ -71,6 +71,13 @@
           
     
       <a routerLink="/products" class="card-link">Go to home page.</a>
+      <div *ngIf="_adminUrl">
+        <a routerLink="/admin/orders" class="card-link">Go back to the orders list.</a>
+      </div>
+      <div *ngIf="_myOrdersUrl">
+        <a routerLink="/my/orders" class="card-link">Go back to the orders list.</a>
+      </div>
+      
     
     </div>
   </div>

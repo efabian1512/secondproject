@@ -1,3 +1,4 @@
+import { UrlsService } from './../../../shared/services/urls.service';
 import { AuthService } from '../../../shared/services/auth.service';
 import { Subscription } from 'rxjs';
 import { OrderService } from '../../../shared/services/order.service';
@@ -16,15 +17,17 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
   userSusbcription:Subscription;
   keys: any[] =[];
   userId:string;
+  url:string;
   
   constructor( 
     private orderService: OrderService, 
-    private authService: AuthService
+    private authService: AuthService,
+    private urlService: UrlsService
     ) { }
 
   ngOnInit() {
      this.userSusbcription= this.authService.user$.subscribe(user => {this.userId =user.uid; this.getOrderByUser(this.userId);});
-    
+     this.getUrl();
   }
 
   private getOrderByUser(uid:string){
@@ -39,6 +42,10 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
      
      ) );
 
+  }
+
+  getUrl(){
+   this.url = this.urlService.url;
   }
 
  ngOnDestroy(){

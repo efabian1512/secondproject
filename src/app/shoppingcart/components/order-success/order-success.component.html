@@ -6,8 +6,8 @@
      <a 
      routerLink="/products"
      >Go to home page.</a> &nbsp;
-     <a 
-     [routerLink]="['/order-detail',id]"
+     <a (click)="setFalse()"
+     [routerLink]="['/order-detail','order',id]"
      >View order details.</a>
     </div>
   </div>

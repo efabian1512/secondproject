@@ -1,4 +1,3 @@
-import { take } from 'rxjs/operators';
 import { OrderService } from './../../../shared/services/order.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -15,6 +14,7 @@ export class OrderSuccessComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private orderService: OrderService
+   
     ) { }
 
   ngOnInit() {
@@ -25,5 +25,6 @@ export class OrderSuccessComponent implements OnInit {
     
 
   }
+
 
 }

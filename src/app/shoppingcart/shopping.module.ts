@@ -14,6 +14,8 @@ import { ShoppingCartComponent } from 'app/shoppingcart/components/shopping-cart
 import { AuthGuard } from 'shared/services/auth-guard.service';
 
 import { SharedModule } from '../shared/shared.module';
+import { UrlIdentification } from 'shared/services/url-identification.service';
+
 
 
 
@@ -27,7 +29,8 @@ import { SharedModule } from '../shared/shared.module';
     ProductFilterComponent,
     ShoppingCartSummaryComponent,
     ShippingFormComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+  
   ],
   imports: [
     SharedModule,
@@ -38,8 +41,8 @@ import { SharedModule } from '../shared/shared.module';
 
       {path:'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
       {path:'order-success/:id', component: OrderSuccessComponent, canActivate: [AuthGuard]},
-      {path:'order-detail/:id', component: OrderDetailsComponent, canActivate: [AuthGuard]},
-      {path:'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard]}
+      {path:'order-detail/:source/:id', component: OrderDetailsComponent, canActivate: [AuthGuard,UrlIdentification]},
+      {path:'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard,UrlIdentification]}
 
     ])
     

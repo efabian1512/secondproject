@@ -1,3 +1,4 @@
+import { UrlsService } from 'shared/services/urls.service';
 import { OrderService } from 'shared/services/order.service';
 import { Subscription } from 'rxjs';
 
@@ -13,8 +14,12 @@ export class AdminOrdersComponent implements OnInit,OnDestroy {
  orders:PlacedOrder[]=[];
  keys:any[]=[];
  susbcription:Subscription;
+ url:string;
 
-  constructor(private orderService: OrderService) { }
+  constructor(
+    private orderService: OrderService,
+    private urlService: UrlsService
+    ) { }
 
   ngOnInit() {
     this.susbcription=this.orderService.getOrders()
@@ -22,6 +27,12 @@ export class AdminOrdersComponent implements OnInit,OnDestroy {
       this.orders[index] = order.payload.exportVal();
       this.keys[index] = order.key;
     }));
+
+    this.getUrl();
+  }
+
+  getUrl(){
+   this.url = this.urlService.url;
   }
 
   ngOnDestroy(){

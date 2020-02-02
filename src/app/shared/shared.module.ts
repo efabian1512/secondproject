@@ -1,3 +1,4 @@
+
 import { RouterModule } from '@angular/router';
 import { ShowOrdersComponent } from 'shared/show-orders/show-orders.component';
 import { CommonModule } from '@angular/common';
@@ -18,6 +19,9 @@ import { CategoryService } from './services/category.service';
 import { OrderService } from './services/order.service';
 import { ShoppingCartService } from './services/shopping-cart.service';
 import { UsersService } from './services/users.service';
+import { UrlIdentification } from './services/url-identification.service';
+import { UrlsService } from './services/urls.service';
+import { OrderDetailsComponent } from 'app/shoppingcart/components/order-details/order-details.component';
 
 
 
@@ -58,7 +62,10 @@ import { UsersService } from './services/users.service';
     CategoryService,
     ProductService, 
     ShoppingCartService,
-    OrderService
+    OrderService,
+    UrlIdentification,
+    UrlsService,
+    OrderDetailsComponent
   ]
  
 })
