@@ -1,13 +1,18 @@
 <div class="card">
     <div class="card-body">
-     <h1>Your order was successfully placed!!!</h1>
+     <h1 class="text-center">Your order was successfully placed!!!</h1>
      <br/>
      <br/>
-     <a 
-     routerLink="/products"
-     >Go to home page.</a> &nbsp;
-     <a (click)="setFalse()"
-     [routerLink]="['/order-detail','order',id]"
-     >View order details.</a>
+     <div class="both">
+       <a 
+      class="btn btn-secondary"
+       routerLink="/products"
+       >Go to home page.</a> &nbsp;
+       <a
+      class="btn btn-secondary"
+       [routerLink]="['/order-detail','order',id]"
+       >View order details.</a>
+      </div>
     </div>
+     
   </div>

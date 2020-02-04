@@ -1,0 +1,24 @@
+.card{
+    background-color: #E5E1E2;
+   
+    height: 400px;
+   
+}
+
+.home-page{
+    position: absolute;
+    bottom:0;
+    margin-bottom: 10px;
+}
+
+.both{
+    position: absolute;
+    bottom:0;
+    margin-bottom: 10px;
+   
+    float: left;
+}
+
+/*.car-body{
+    position: relative;
+}*/
