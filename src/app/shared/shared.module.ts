@@ -1,3 +1,4 @@
+import { AdminOrdersSourceGuard} from './services/admin-orders-source-guard.service';
 
 
 import { RouterModule } from '@angular/router';
@@ -65,7 +66,8 @@ import { UrlsService } from './services/urls.service';
     ShoppingCartService,
     OrderService,
     UrlIdentification,
-    UrlsService
+    UrlsService,
+    AdminOrdersSourceGuard
    
   ]
  
