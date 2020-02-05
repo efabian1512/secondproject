@@ -12,6 +12,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { ProductsComponent } from './shoppingcart/components/products/products.component';
 import { ShoppingModule } from './shoppingcart/shopping.module';
+import { PaypalCheckoutComponent } from './paypal-checkout/paypal-checkout.component';
 
 
 
@@ -23,6 +24,7 @@ import { ShoppingModule } from './shoppingcart/shopping.module';
 @NgModule({
   declarations: [
     AppComponent,
+    PaypalCheckoutComponent,
  
    
   
@@ -38,6 +40,7 @@ import { ShoppingModule } from './shoppingcart/shopping.module';
     RouterModule.forRoot([
       {path:'', component: ProductsComponent},
       {path:'login', component: LoginComponent},
+      {path:'paypalcheckout',component:PaypalCheckoutComponent},
       {path:'**',component: ProductsComponent}
      
      
