@@ -6,9 +6,10 @@ declare var paypal;
   styleUrls: ['./paypal-checkout.component.css']
 })
 export class PaypalCheckoutComponent implements OnInit {
-@ViewChild('paypal',{static:true}) paymentElement: ElementRef;
+@ViewChild('paypal',{static: true}) paypalElement: ElementRef;
 
-paidFor;
+paidFor=false;
+
 product = {
   price: 5,
   description:'Red Hawk Cheese',
@@ -22,7 +23,7 @@ product = {
 
     paypal
      .Buttons({
-       createOrder:(data, actions)=>{
+       createOrder: (data, actions)=>{
          return actions.order.create({
           purchase_units: [{
             description: this.product.description,
@@ -47,7 +48,7 @@ product = {
          console.log(err);
        }
       })
-     .render(this.paymentElement.nativeElement);
+     .render(this.paypalElement.nativeElement);
   }
 
 }
