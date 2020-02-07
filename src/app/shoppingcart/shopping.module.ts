@@ -1,3 +1,4 @@
+import { PaymentMethodModalComponent } from 'app/shoppingcart/components/payment-method-modal/payment-method-modal.component';
 import { AdminOrdersSourceGuard } from './../shared/services/admin-orders-source-guard.service';
 
 
@@ -32,6 +33,7 @@ import { UrlIdentification } from 'shared/services/url-identification.service';
     ShoppingCartSummaryComponent,
     ShippingFormComponent,
     OrderDetailsComponent,
+    PaymentMethodModalComponent
   
   ],
   imports: [

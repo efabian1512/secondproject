@@ -21,10 +21,12 @@ import { PaypalCheckoutComponent } from './paypal-checkout/paypal-checkout.compo
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     PaypalCheckoutComponent,
+   
  
    
   

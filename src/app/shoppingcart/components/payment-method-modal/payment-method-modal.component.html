@@ -1,0 +1,36 @@
+<!-- Trigger the modal with a button -->
+<button 
+(click)="showModal=true"
+type="button" 
+class="btn btn-primary btn-lg" 
+data-toggle="modal" 
+data-target="#myModal">
+Select Payment Method</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog" [ngClass]="{'show':showModal}">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Choose Payment Method</h4>
+        <button 
+        (click)="showModal=false"
+        type="button" 
+        class="close" 
+        data-dismiss="modal">&times;</button>
+        
+      </div>
+      <div class="modal-body">
+          <input type="radio" name="paymentMethod" value="card"> Card<br>
+          <input type="radio" name="paymentMethod" value="paypal"> Pay with Paypal
+      </div>
+      <div class="modal-footer">
+        <button (click)="showModal=false" type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
