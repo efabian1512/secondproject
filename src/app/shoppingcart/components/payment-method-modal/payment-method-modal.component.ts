@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'payment-method-modal',
@@ -7,14 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentMethodModalComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
   
+  selection:string;
+
   showModal:boolean=false;
   ngOnInit() {
   }
 
-  toggleModal(){
-    this.showModal = !this.showModal;
+  selectionValue(event){
+    this.selection = event.target.value;
+  }
+
+  methodSelection(){
+
+    console.log(this.selection);
+     if(this.selection)
+      if(this.selection === "paypal"){
+        this.router.navigate(['/paypal']);
+      }else{
+        this.router.navigate(['card']);
+      }
+    this.showModal = false;
+
   }
 
 }

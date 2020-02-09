@@ -8,7 +8,7 @@ data-target="#myModal">
 Select Payment Method</button>
 
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog" [ngClass]="{'show':showModal}">
+<div id="myModal" class="modal fade" role="dialog" [class.show]="showModal">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -23,11 +23,17 @@ Select Payment Method</button>
         
       </div>
       <div class="modal-body">
-          <input type="radio" name="paymentMethod" value="card"> Card<br>
-          <input type="radio" name="paymentMethod" value="paypal"> Pay with Paypal
+        <div class="form-group">
+         
+            <input #card (change)="selectionValue($event)"  type="radio" name="paymentMethod" id="paymentMethodCard" value="card"> Card<br/>
+            <input #paypal (change)= 'selectionValue($event)' type="radio" name="paymentMethod" id="paymentMethodPaypal" value="paypal"> Pay with Paypal
+          
+         
       </div>
+      </div>
+      
       <div class="modal-footer">
-        <button (click)="showModal=false" type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+        <button (click)="methodSelection()" type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
       </div>
     </div>
 

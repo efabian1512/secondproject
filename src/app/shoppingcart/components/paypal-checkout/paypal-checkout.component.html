@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-6">
+
+      
+        <div *ngIf="!paidFor">
+            <shopping-cart-summary *ngIf="shoppingCart" [cart]="shoppingCart"></shopping-cart-summary>
+        </div>
+          
+        <div *ngIf="paidFor">
+        
+            <h1>Yay, you bougth a sweet couch!</h1>
+        
+        </div>
+
+    </div>
+    <div class="col-6">
+       
+     
+        
+        <div #paypal></div>
+
+    </div>
+</div>
+
+

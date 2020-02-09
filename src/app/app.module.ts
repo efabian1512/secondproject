@@ -12,7 +12,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { ProductsComponent } from './shoppingcart/components/products/products.component';
 import { ShoppingModule } from './shoppingcart/shopping.module';
-import { PaypalCheckoutComponent } from './paypal-checkout/paypal-checkout.component';
+import { PaypalCheckoutComponent } from './shoppingcart/components/paypal-checkout/paypal-checkout.component';
 
 
 
@@ -25,7 +25,7 @@ import { PaypalCheckoutComponent } from './paypal-checkout/paypal-checkout.compo
 @NgModule({
   declarations: [
     AppComponent,
-    PaypalCheckoutComponent,
+   
    
  
    
