@@ -6,7 +6,7 @@ export class Order{
     items: any[];
 
 
-    constructor(public userId: string,public shipping:any,shoppingCart: ShoppingCart){
+    constructor(public userId: string,public shipping:any,shoppingCart: ShoppingCart,public paypalOrderId?:string){
        
        
        this.datePlaced = new Date().getTime();

@@ -22,7 +22,7 @@ export class PaymentMethodModalComponent implements OnInit {
 
   methodSelection(){
 
-    console.log(this.selection);
+    
      if(this.selection)
       if(this.selection === "paypal"){
         this.router.navigate(['/paypal']);

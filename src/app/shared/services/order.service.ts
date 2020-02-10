@@ -18,6 +18,11 @@ export class OrderService {
      this.cartService.clearCart();
      return result;
   }
+  async placePaypalOrder(order){
+    let result = await this.db.list('/paypal_orders').push(order);
+    this.cartService.clearCart();
+    return result;
+ }
 
   getOrders(){
     return this.db.list('/orders').snapshotChanges();
