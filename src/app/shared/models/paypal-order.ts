@@ -1,12 +1,12 @@
 import { ShoppingCart } from './shopping-cart';
 
-export class Order{
+export class PaypalOrder{
 
     datePlaced;
     items: any[];
 
 
-    constructor(public userId: string,public shipping:any,shoppingCart: ShoppingCart){
+    constructor(public userId: string,public shipping:any,shoppingCart: ShoppingCart,public paypalOrderId?:string){
        
        
        this.datePlaced = new Date().getTime();

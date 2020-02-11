@@ -1,7 +1,7 @@
 import { PaypalCheckoutComponent } from 'app/shoppingcart/components/paypal-checkout/paypal-checkout.component';
 import { PaymentMethodModalComponent } from 'app/shoppingcart/components/payment-method-modal/payment-method-modal.component';
 import { AdminOrdersSourceGuard } from './../shared/services/admin-orders-source-guard.service';
-
+import { CardComponent } from 'app/shoppingcart/components/card/card.component';
 
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
@@ -35,7 +35,8 @@ import { UrlIdentification } from 'shared/services/url-identification.service';
     ShippingFormComponent,
     OrderDetailsComponent,
     PaymentMethodModalComponent,
-    PaypalCheckoutComponent
+    PaypalCheckoutComponent,
+    CardComponent
   
   ],
   imports: [
@@ -47,6 +48,7 @@ import { UrlIdentification } from 'shared/services/url-identification.service';
 
       {path:'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
       {path:'paypal',component:PaypalCheckoutComponent, canActivate: [AuthGuard]},
+      {path:'card',component:CardComponent, canActivate: [AuthGuard]},
       {path:'order-success/:id', component: OrderSuccessComponent, canActivate: [AuthGuard]},
       {path:'order-detail/:source/:id', component: OrderDetailsComponent, canActivate: [AuthGuard,UrlIdentification]},
       {path:'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard,UrlIdentification]}

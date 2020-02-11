@@ -27,7 +27,7 @@ export class PaymentMethodModalComponent implements OnInit {
       if(this.selection === "paypal"){
         this.router.navigate(['/paypal']);
       }else{
-        this.router.navigate(['card']);
+        this.router.navigate(['/card']);
       }
     this.showModal = false;
 

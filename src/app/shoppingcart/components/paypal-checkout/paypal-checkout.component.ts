@@ -7,6 +7,7 @@ import { ShoppingCartService } from './../../../shared/services/shopping-cart.se
 import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { ShoppingCart } from 'shared/models/shopping-cart';
 import { take } from 'rxjs/operators';
+import { PaypalOrder } from 'shared/models/paypal-order';
 declare var paypal;
 @Component({
   selector: 'app-paypal-checkout',
@@ -113,7 +114,7 @@ userId: string;
          for(let unit of units)
          this.shipping = unit.shipping;
 
-         let userOrder = new Order(this.userId,this.shipping,shoppingCart,orderId);
+         let userOrder = new PaypalOrder(this.userId,this.shipping,shoppingCart,orderId);
          this.orderService.placePaypalOrder(userOrder);
          console.log(order);
          /*return actions.order.get().then((orderDetails)=>{

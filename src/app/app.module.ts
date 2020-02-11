@@ -22,9 +22,11 @@ import { PaypalCheckoutComponent } from './shoppingcart/components/paypal-checko
 
 
 
+
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
+    
    
    
  
@@ -43,6 +45,7 @@ import { PaypalCheckoutComponent } from './shoppingcart/components/paypal-checko
       {path:'', component: ProductsComponent},
       {path:'login', component: LoginComponent},
       {path:'paypalcheckout',component:PaypalCheckoutComponent},
+     
       {path:'**',component: ProductsComponent}
      
      
@@ -53,6 +56,7 @@ import { PaypalCheckoutComponent } from './shoppingcart/components/paypal-checko
    
     
   ],
+ 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
