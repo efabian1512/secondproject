@@ -12,7 +12,7 @@ import { PlacedOrder } from 'shared/models/placed-order';
 })
 export class AdminOrdersComponent implements OnInit,OnDestroy {
  orders:PlacedOrder[]=[];
- keys:any[]=[];
+ //keys:any[]=[];
  susbcription:Subscription;
  url:string;
 
@@ -25,7 +25,7 @@ export class AdminOrdersComponent implements OnInit,OnDestroy {
     this.susbcription=this.orderService.getOrders()
     .subscribe(orders => orders.forEach((order,index) => {
       this.orders[index] = order.payload.exportVal();
-      this.keys[index] = order.key;
+      this.orders[index].key = order.key;
     }));
 
     this.getUrl();

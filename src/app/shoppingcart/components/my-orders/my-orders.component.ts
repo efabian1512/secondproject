@@ -15,7 +15,7 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
   orders: PlacedOrder[] = [];
   ordersSusbcription:Subscription;
   userSusbcription:Subscription;
-  keys: any[] =[];
+  //keys: any[] =[];
   userId:string;
   url:string;
   
@@ -36,7 +36,7 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
       {
         
         this.orders[index]= order.payload.exportVal();
-        this.keys[index]= order.key;
+        this.orders[index].key= order.key;
         
      } 
      

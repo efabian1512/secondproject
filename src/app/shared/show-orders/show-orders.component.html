@@ -12,7 +12,7 @@ svSortOrder="asc">
         <tr *ngFor="let order of sv.data; index as i">
             <td>{{order.shipping.name}}</td>
             <td>{{order.datePlaced | date:'longDate'}}</td>
-            <td><a [routerLink]="['/order-detail',source,keys[i]]">View Details</a></td>
+            <td><a [routerLink]="['/order-detail',source,order.key]">View Details</a></td>
         </tr>
     </tbody>
     <tfoot>

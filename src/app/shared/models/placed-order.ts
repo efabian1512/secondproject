@@ -9,6 +9,8 @@ export class PlacedOrder{
     private _shipping: Shipping;
 
      private _datePlaced;
+
+     key:string;
      
      orderItems: ItemPlacedInOrder[] =[];
 

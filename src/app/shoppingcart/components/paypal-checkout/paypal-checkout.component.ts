@@ -1,14 +1,14 @@
-import { Order } from './../../../shared/models/order';
 import { AuthService } from './../../../shared/services/auth.service';
 import { OrderService } from './../../../shared/services/order.service';
-import { ShoppingCartItem } from './../../../shared/models/shopping-cart-item';
 import { Observable, Subscription } from 'rxjs';
 import { ShoppingCartService } from './../../../shared/services/shopping-cart.service';
 import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { ShoppingCart } from 'shared/models/shopping-cart';
 import { take } from 'rxjs/operators';
 import { PaypalOrder } from 'shared/models/paypal-order';
+
 declare var paypal;
+
 @Component({
   selector: 'app-paypal-checkout',
   templateUrl: './paypal-checkout.component.html',
@@ -43,11 +43,7 @@ userId: string;
     this.userSusbcription = this.authService.user$.subscribe(user => this.userId = user.uid);
     
     this.cart$.pipe(take(1)).subscribe(cart =>{this.shoppingCart = cart; this.shoppingCartToPaypal(this.shoppingCart)});
-
-     //let shopCart:any = this.shoppingCart || {};
-
-     
-  }
+   }
 
  
   ngOnDestroy(){
@@ -61,7 +57,7 @@ userId: string;
    let shop:any = shoppingCart || {};
    
     let shopCart:any = shop.items || {};
-    //console.log(shopCart);
+    
     this.description ="";
    for(let item of shopCart)
    this.description += item.quantity + ' - ' + item.title +'\n';
@@ -73,7 +69,7 @@ userId: string;
       
       createOrder: (data, actions)=>{
          return actions.order.create({
-           //purchase_units: this.paypalItems
+          
           purchase_units: [{
             description: this.description,
            

@@ -1,4 +1,3 @@
-import { UrlsService } from './../services/urls.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { PlacedOrder } from 'shared/models/placed-order';
 
@@ -10,10 +9,10 @@ import { PlacedOrder } from 'shared/models/placed-order';
 export class ShowOrdersComponent implements OnInit {
 
   @Input('orders') orders:PlacedOrder[]=[];
-  @Input('keys') keys:any[]=[];
+  //@Input('keys') keys:any[]=[];
   @Input('url') url:string;
   source:string;
-  //constructor() { }
+
 
   ngOnInit() {
    if(this.url)
