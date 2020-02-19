@@ -23,6 +23,7 @@ import { ShoppingCartService } from './services/shopping-cart.service';
 import { UsersService } from './services/users.service';
 import { UrlIdentification } from './services/url-identification.service';
 import { UrlsService } from './services/urls.service';
+import { ProductsSlideComponent } from './components/products-slide/products-slide.component';
 
 
 
@@ -32,7 +33,8 @@ import { UrlsService } from './services/urls.service';
   declarations: [
     ProductCardComponent,
     ProductQuantityComponent,
-    ShowOrdersComponent
+    ShowOrdersComponent,
+    ProductsSlideComponent
   ],
   imports: [
     CommonModule,
@@ -55,7 +57,8 @@ import { UrlsService } from './services/urls.service';
     CustomFormsModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    ShowOrdersComponent
+    ShowOrdersComponent,
+    ProductsSlideComponent
   ],
   providers:[
     AuthService,

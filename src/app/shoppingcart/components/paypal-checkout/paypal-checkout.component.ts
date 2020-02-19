@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../../../shared/services/auth.service';
 import { OrderService } from './../../../shared/services/order.service';
 import { Observable, Subscription } from 'rxjs';
@@ -33,7 +34,8 @@ userId: string;
   constructor(
     private cartService: ShoppingCartService,
     private orderService: OrderService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
     
     ) { }
   
@@ -78,28 +80,10 @@ userId: string;
               currency_code: 'USD',
               value: shop.totalPrice
             },
-            shipping: {
-                name: {full_name:'Edwin Fabian Perez'},
-                address: {
-                  adress_line1:'Calle Respaldo San Antonio No.22',
-                  admin_area_2:'San Isidro',
-                  admin_area_1:'Santo Domingo',
-                  postal_code:'11902',
-                  country_code:'DO'
-                }
-            }
            }]
-          
-  
-
          });
         
        },
-       /*onShippingChange:(data,actions)=>{
-           this.shipping = data.shipping_address;
-           console.log(this.shipping);
-       },*/
-      
        onApprove: async (data,actions) => {
          const order = await actions.order.capture();
          this.paidFor = true;
@@ -111,8 +95,15 @@ userId: string;
          this.shipping = unit.shipping;
 
          let userOrder = new PaypalOrder(this.userId,this.shipping,shoppingCart,orderId);
-         this.orderService.placePaypalOrder(userOrder);
+         let result = await this.orderService.placePaypalOrder(userOrder);
          console.log(order);
+         
+         this.router.navigate(['/order-success',result.key]);
+
+         
+         
+
+
          /*return actions.order.get().then((orderDetails)=>{
             console.log(orderDetails);
          });*/
