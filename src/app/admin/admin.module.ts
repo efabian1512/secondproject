@@ -1,3 +1,5 @@
+
+import { AdminSlideContentComponent } from './components/admin-slide-content/admin-slide-content.component';
 import { UrlIdentification } from 'shared/services/url-identification.service';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -11,11 +13,13 @@ import { AdminAuthGuard } from './services/admin-auth-guard.service';
 
 
 
+
 @NgModule({
   declarations: [
     AdminProductsComponent,
     AdminOrdersComponent,
     ProductFormComponent,
+    AdminSlideContentComponent
   ],
   imports: [
     SharedModule,
@@ -24,7 +28,8 @@ import { AdminAuthGuard } from './services/admin-auth-guard.service';
       {path:'admin/products/new', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path:'admin/products/:id', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path:'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard]},
-      {path:'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard,UrlIdentification]}
+      {path:'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard,UrlIdentification]},
+      {path:'admin/slide-content',component:AdminSlideContentComponent, canActivate:[AuthGuard, AdminAuthGuard]}
      
     ])
     

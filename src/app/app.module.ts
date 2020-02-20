@@ -24,9 +24,11 @@ import { PaypalCheckoutComponent } from './shoppingcart/components/paypal-checko
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent
+  
     ],
   imports: [
     BrowserModule,

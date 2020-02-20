@@ -1,3 +1,4 @@
+import { SlideContentService } from './../../../admin/services/slide-content.service';
 
 import { Component, ViewChild,OnInit } from '@angular/core';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
@@ -9,14 +10,24 @@ import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/n
 })
 export class ProductsSlideComponent implements OnInit {
 
-  constructor() { }
+  images:any =[];
+  constructor(private slideService : SlideContentService) { }
 
 
 
   ngOnInit() {
+    this.slideService.getAll().subscribe(images => {
+      images.forEach((image,index) => {
+             let object = image.payload.exportVal() || {};
+             this.images[index] = object;
+      });
+    });
   }
 
-  images = [62, 83, 466, 965, 982, 1043, 738].map((n) => `https://picsum.photos/id/${n}/900/500`);
+
+  //images = [62, 83, 466, 965, 982, 1043, 738].map((n) => `https://picsum.photos/id/${n}/900/500`);
+
+  
 
   paused = false;
   unpauseOnArrow = false;
