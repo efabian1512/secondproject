@@ -36,7 +36,7 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
       {
         
         this.orders[index]= order.payload.exportVal();
-        this.orders[index].key= order.key;
+        //this.orders[index].key= order.key;
         
      } 
      

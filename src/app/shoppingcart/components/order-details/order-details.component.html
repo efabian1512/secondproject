@@ -5,7 +5,14 @@
       <div class="card-text">
         
           <span class="letter">Customer:</span>&nbsp;
-          <span *ngIf="order.shipping as shipping">{{shipping.name}}</span><br/><br>
+      
+             <span *ngIf="order.shipping as shipping">{{shipping.name}}</span>
+              <!--<span *ngIf="shipping.name as person">{{person.full_name}}</span>-->
+           
+           
+            <br/><br>
+         
+          
           <span class="letter">Date Placed:</span>&nbsp;
             <span>{{order.datePlaced | date:'medium'}}</span><br/><br/>
          

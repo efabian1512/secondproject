@@ -13,20 +13,30 @@ import { PlacedOrder } from 'shared/models/placed-order';
 export class AdminOrdersComponent implements OnInit,OnDestroy {
  orders:PlacedOrder[]=[];
  //keys:any[]=[];
- susbcription:Subscription;
+ ordersSubscription:Subscription;
+ paypalOrdersSubscription: Subscription;
  url:string;
-
+ gIndex:number=0;
   constructor(
     private orderService: OrderService,
     private urlService: UrlsService
     ) { }
 
   ngOnInit() {
-    this.susbcription=this.orderService.getOrders()
-    .subscribe(orders => orders.forEach((order,index) => {
-      this.orders[index] = order.payload.exportVal();
-      this.orders[index].key = order.key;
+    
+    this.ordersSubscription=this.orderService.getOrders().subscribe(orders => orders.forEach((order)=>{
+      this.orders.push(order);
     }));
+  //console.log(this.orders);
+     
+  
+
+   this.paypalOrdersSubscription = this.orderService.getPaypalOrders()
+    .subscribe(orders =>  orders.forEach((order)=>{
+    
+      this.orders.push(order);
+    
+    }) );
 
     this.getUrl();
   }
@@ -36,7 +46,8 @@ export class AdminOrdersComponent implements OnInit,OnDestroy {
   }
 
   ngOnDestroy(){
-    this.susbcription.unsubscribe();
+    this.ordersSubscription.unsubscribe();
+    this.paypalOrdersSubscription.unsubscribe();
   }
 
 }

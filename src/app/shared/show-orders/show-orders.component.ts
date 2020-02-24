@@ -1,3 +1,4 @@
+import { OrderService } from 'shared/services/order.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { PlacedOrder } from 'shared/models/placed-order';
 
@@ -13,6 +14,9 @@ export class ShowOrdersComponent implements OnInit {
   @Input('url') url:string;
   source:string;
 
+  constructor(private orderService: OrderService){
+
+  }
 
   ngOnInit() {
    if(this.url)
@@ -24,7 +28,10 @@ export class ShowOrdersComponent implements OnInit {
      this.source ="admin";
    }
     
+  
 
   }
+
+  
 
 }

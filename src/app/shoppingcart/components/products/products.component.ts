@@ -1,3 +1,4 @@
+import { OrderService } from 'shared/services/order.service';
 import { ShoppingCart } from '../../../shared/models/shopping-cart';
 import { ShoppingCartService } from '../../../shared/services/shopping-cart.service';
 import { switchMap } from 'rxjs/operators';
@@ -25,8 +26,8 @@ export class ProductsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private cartService: ShoppingCartService
-  
+    private cartService: ShoppingCartService,
+    private orderService: OrderService
    
     ) {
       
@@ -37,6 +38,7 @@ export class ProductsComponent implements OnInit {
       async ngOnInit(){
          this.cart$ = await this.cartService.getCart();
         this.populateProducts();
+      
          
       }
 
