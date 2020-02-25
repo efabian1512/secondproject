@@ -26,6 +26,7 @@ export class AdminOrdersComponent implements OnInit,OnDestroy {
     
     this.ordersSubscription=this.orderService.getOrders().subscribe(orders => orders.forEach((order)=>{
       this.orders.push(order);
+     
     }));
   //console.log(this.orders);
      
@@ -35,6 +36,7 @@ export class AdminOrdersComponent implements OnInit,OnDestroy {
     .subscribe(orders =>  orders.forEach((order)=>{
     
       this.orders.push(order);
+     
     
     }) );
 

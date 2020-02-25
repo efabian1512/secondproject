@@ -61,9 +61,12 @@
               <h5 class="letter">Shipping Information:</h5><hr>
               <div *ngIf="order.shipping as shipping">
                 <span>{{shipping.name}}</span><br/>
-                <span>{{shipping.addressLine1}}, </span><br/>
-                <span>{{shipping.addressLine2}},</span><br/>
-                <span>{{shipping.city}}.</span>
+                <div *ngIf="shipping.address as address" >
+                  <span>{{address.address_line_1}}, </span><br/>
+                  <span>{{address.admin_area_2}},</span><br/>
+                  <span>{{address.admin_area_1}}.</span>
+                </div>
+                
 
               </div>
         

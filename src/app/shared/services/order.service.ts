@@ -32,7 +32,8 @@ private array2:PlacedOrder[]=[];
    getOrders(){
     return this.db.list('/orders').snapshotChanges()
     .pipe(map(orders => orders.forEach((order,index) => {
-      return this.array.push(new PlacedOrder(order.payload.exportVal(),order.key));
+      let orderr =new PlacedOrder(order.payload.exportVal(),order.key);
+      this.array[index]=orderr;
    
       //if(index===orders.length-1)
        
@@ -63,8 +64,9 @@ private array2:PlacedOrder[]=[];
   }
   getPaypalOrders(){
     return this.db.list('/paypal_orders').snapshotChanges()
-    .pipe(map(orders => orders.forEach((order)=>{
-       this.array2.push(new PlacedOrder(order.payload.exportVal(),order.key));
+    .pipe(map(orders => orders.forEach((order,index)=>{
+     let orderr = new PlacedOrder(order.payload.exportVal(),order.key);
+     this.array2[index]=orderr;
     }))).pipe(map(order=> {return this.array2}));
    
   

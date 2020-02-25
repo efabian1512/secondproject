@@ -1,30 +1,45 @@
 <form #f="ngForm">
     <div class="form-group">
       <label for="">Name</label>
-      <input #name="ngModel" name="name" [(ngModel)]="shipping.name" type="text" class="form-control" required>
-      <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
-        <div *ngIf="name.errors.required">Name is required.</div>
+      <input #full_name="ngModel" name="full_name" [(ngModel)]="shipping.name.full_name" type="text" class="form-control" placeholder="Full Name" required>
+      <div class="alert alert-danger" *ngIf="full_name.touched && full_name.invalid">
+        <div *ngIf="full_name.errors.required">Name is required.</div>
       </div>
     </div>
     <div class="form-group">
       <label for="">Address</label>
-      <input #addressLine1="ngModel" name="addressLine1" [(ngModel)]="shipping.addressLine1" type="text" class="form-control" placeholder="Line 1" required>
-      <div class="alert alert-danger" *ngIf="addressLine1.touched && addressLine1.invalid">
-        <div *ngIf="addressLine1.errors.required">Address Line 1 is required.</div>
+      <input  #address_line_1="ngModel" name="address_line_1" [(ngModel)]="shipping.address.address_line_1" type="text" class="form-control" placeholder="Street., Apt.,bldg." required>
+      <div class="alert alert-danger" *ngIf="address_line_1.touched && address_line_1.invalid">
+        <div *ngIf="address_line_1.errors.required">Address Line 1 is required.</div>
+      </div>
+    </div>
+   
+    <div class="form-group">
+      <label for="">City</label>
+      <input #admin_area_1="ngModel" name="admin_area_1" [(ngModel)]="shipping.address.admin_area_1" type="text" class="form-control" placeholder="City" required>
+      <div class="alert alert-danger" *ngIf="admin_area_1.touched && admin_area_1.invalid">
+        <div *ngIf="admin_area_1.errors.required">City is required.</div>
       </div>
     </div>
     <div class="form-group">
       <label for=""></label>
-      <input #addressLine2="ngModel" name="addressLine2" [(ngModel)]="shipping.addressLine2" type="text" class="form-control" placeholder="Line 2" required>
-      <div class="alert alert-danger" *ngIf="addressLine2.touched && addressLine2.invalid">
-        <div *ngIf="addressLine2.errors.required">Address Line 2 is required.</div>
+      <input #admin_area_2="ngModel" name="admin_area_2" [(ngModel)]="shipping.address.admin_area_2" type="text" class="form-control" placeholder="Sector" required>
+      <div class="alert alert-danger" *ngIf="admin_area_2.touched && admin_area_2.invalid">
+        <div *ngIf="admin_area_2.errors.required">Address Line 2 is required.</div>
       </div>
     </div>
     <div class="form-group">
-      <label for="">City</label>
-      <input #city="ngModel" name="city" [(ngModel)]="shipping.city" type="text" class="form-control" required>
-      <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
-        <div *ngIf="city.errors.required">City is required.</div>
+      <label for="">Country</label>
+      <input #country_code="ngModel" name="country_code" [(ngModel)]="shipping.address.country_code" type="text" class="form-control" placeholder="Country" required>
+      <div class="alert alert-danger" *ngIf="country_code.touched && country_code.invalid">
+        <div *ngIf="country_code.errors.required">Country is required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for=""></label>
+      <input #postal_code="ngModel" name="postal_code" [(ngModel)]="shipping.address.postal_code" type="text" class="form-control" placeholder="Postal code" required>
+      <div class="alert alert-danger" *ngIf="postal_code.touched && postal_code.invalid">
+        <div *ngIf="postal_code.errors.required">Postal code is required.</div>
       </div>
     </div>
     <button

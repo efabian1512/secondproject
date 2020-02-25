@@ -19,11 +19,12 @@ export class PlacedOrder{
     constructor(private placedOrder?,private orderId?){
         this.placedOrder = placedOrder || {};
         
+       
         this._key = orderId;
 
         this._datePlaced = this.placedOrder.datePlaced;
 
-        let shippingObject = this.placedOrder.shipping;
+        let shippingObject = this.placedOrder.shipping || {};
 
         let paypalObjectName = shippingObject.name || {};
 
@@ -31,11 +32,11 @@ export class PlacedOrder{
 
         let paypalShippingFullName = paypalObjectName.full_name;
 
-        if(paypalShippingFullName){
+        //if(paypalShippingFullName){
             this._shipping = new PaypalShipping(new PaypalAddress({...paypalShippingAddress}),paypalShippingFullName);
-        }else{
-            this._shipping = new Shipping({...shippingObject});
-        }
+        //}else{
+            //this._shipping = new Shipping({...shippingObject});
+        //}
 
        
 
