@@ -96,7 +96,7 @@ userId: string;
 
          let userOrder = new PaypalOrder(this.userId,this.shipping,shoppingCart,orderId);
          let result = await this.orderService.placePaypalOrder(userOrder);
-         console.log(order);
+         //console.log(order);
          
          this.router.navigate(['/order-success',result.key]);
 
@@ -111,8 +111,19 @@ userId: string;
       onError: err =>{
          console.log(err);
        },
+       style: {
+        layout:  'vertical',
+        color:   'black',
+        shape:   'pill',
+        label:   'pay',
+      
+        
+      }
       })
-     .render(this.paypalElement.nativeElement);
+     .render(
+       this.paypalElement.nativeElement
+       
+       );
 
   }
 
