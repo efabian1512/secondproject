@@ -14,7 +14,11 @@ export class PlacedOrder{
 
      private _key:string;
      
+     private _paypalOrderId;
+
      orderItems: ItemPlacedInOrder[] =[];
+
+    
 
     constructor(private placedOrder?,private orderId?){
         this.placedOrder = placedOrder || {};
@@ -22,9 +26,13 @@ export class PlacedOrder{
        
         this._key = orderId;
 
+       
+
         this._datePlaced = this.placedOrder.datePlaced;
 
         let shippingObject = this.placedOrder.shipping || {};
+
+        this._paypalOrderId = this.placedOrder.paypalOrderId;
 
         let paypalObjectName = shippingObject.name || {};
 
@@ -54,6 +62,10 @@ export class PlacedOrder{
         }
         
         
+    }
+
+    get paypalOrderId(){
+        return this._paypalOrderId;
     }
 
     get key(){

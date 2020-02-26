@@ -7,15 +7,19 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 import {map, switchMap} from 'rxjs/operators';
 import { PlacedOrder } from 'shared/models/placed-order';
-import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
 
-private array: PlacedOrder[]=[]; 
-private array2:PlacedOrder[]=[]; 
+private ordersArray: PlacedOrder[]=[]; 
+private ordersArray2:PlacedOrder[]=[]; 
+private singleUserOrders: PlacedOrder[]=[];
+private singleUserOrders2: PlacedOrder[]=[];
+
+
   constructor( private db: AngularFireDatabase, private cartService: ShoppingCartService) { }
 
   async placeOrder(order){
@@ -33,22 +37,15 @@ private array2:PlacedOrder[]=[];
     return this.db.list('/orders').snapshotChanges()
     .pipe(map(orders => orders.forEach((order,index) => {
       let orderr =new PlacedOrder(order.payload.exportVal(),order.key);
-      this.array[index]=orderr;
+      this.ordersArray[index]=orderr;
    
-      //if(index===orders.length-1)
-       
-      
-        
      
-    }) )).pipe(map(o=> { return this.array}));
+       }) )).pipe(map(o=> { return this.ordersArray}));
     
 
   }
 
-  get arayyy (){
-   console.log(this.array);
-    return this.array;
-  }
+ 
 
   getASingleOrder(orderId: string){
     return this.db.object('/orders/'+orderId)
@@ -59,15 +56,22 @@ private array2:PlacedOrder[]=[];
   }
   getOrdersByUser(userId: string){
     
-    return this.db.list('/orders',(ref => ref.orderByChild('userId').equalTo(userId))).snapshotChanges();
+    return this.db.list('/orders',(ref => ref.orderByChild('userId').equalTo(userId))).snapshotChanges()
+    .pipe(map(orders =>{
+      orders.forEach((order,index)=>{
+        let placedOrder = new PlacedOrder(order.payload.exportVal(),order.key);
+
+        this.singleUserOrders[index]= placedOrder;
+      })
+    })).pipe(map(orders => {return this.singleUserOrders}));
 
   }
   getPaypalOrders(){
     return this.db.list('/paypal_orders').snapshotChanges()
     .pipe(map(orders => orders.forEach((order,index)=>{
      let orderr = new PlacedOrder(order.payload.exportVal(),order.key);
-     this.array2[index]=orderr;
-    }))).pipe(map(order=> {return this.array2}));
+     this.ordersArray2[index]=orderr;
+    }))).pipe(map(order=> {return this.ordersArray2}));
    
   
     
@@ -83,7 +87,15 @@ private array2:PlacedOrder[]=[];
   }
   getPaypalOrdersByUser(userId: string){
     
-    return this.db.list('/paypal_orders',(ref => ref.orderByChild('userId').equalTo(userId))).snapshotChanges();
+    return this.db.list('/paypal_orders',(ref => ref.orderByChild('userId').equalTo(userId))).snapshotChanges()
+    .pipe(map(orders =>{
+      orders.forEach((order,index)=>{
+        let placedOrder = new PlacedOrder(order.payload.exportVal(),order.key);
+
+        this.singleUserOrders2[index]= placedOrder;
+      })
+    })).pipe(map(orders => {return this.singleUserOrders2}));
+
 
   }
 }

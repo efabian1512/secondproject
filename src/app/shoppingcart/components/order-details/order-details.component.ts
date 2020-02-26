@@ -43,38 +43,19 @@ async ngOnInit() {
      this.orderService.getASinglePaypalOrder(id).pipe(take(1))
     .subscribe(order => {
    
-      let anyOrder:any = order;
 
-      // if(anyOrder.paypalOrderId){
-         console.log(anyOrder);
-        this.order =  order;
-       /*}else{
+      if(order.paypalOrderId){
+           this.order =  order;
+       }else{
         this.orderService.getASingleOrder(id).pipe(take(1))
         .subscribe(order1 => this.order = order1);
-       }*/
-     
-      
-
-     
-      
-        
-     
-      
-     
-      });
+      }
+     });
       this.identifyUrl();
-
-
-    
+}
 
    
  
-      
-  
-  }
-
-   
-   
   
 
 

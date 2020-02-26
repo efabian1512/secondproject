@@ -13,7 +13,8 @@ import { PlacedOrder } from 'shared/models/placed-order';
 export class MyOrdersComponent implements OnInit, OnDestroy {
 
   orders: PlacedOrder[] = [];
-  ordersSusbcription:Subscription;
+  ordersSubscription:Subscription;
+  paypalOrderSubscription: Subscription;
   userSusbcription:Subscription;
   //keys: any[] =[];
   userId:string;
@@ -26,22 +27,29 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
     ) { }
 
   ngOnInit() {
-     this.userSusbcription= this.authService.user$.subscribe(user => {this.userId =user.uid; this.getOrderByUser(this.userId);});
+     this.userSusbcription= this.authService.user$.subscribe(user => 
+      {this.userId =user.uid; this.getOrdersByUser(this.userId); 
+       this.getPaypalOrdersByUser(this.userId);
+      });
      this.getUrl();
   }
 
-  private getOrderByUser(uid:string){
-    this.ordersSusbcription =this.orderService.getOrdersByUser(uid).subscribe(orders => orders.forEach(
-      (order, index) => 
-      {
-        
-        this.orders[index]= order.payload.exportVal();
-        //this.orders[index].key= order.key;
-        
-     } 
-     
-     ) );
+  private getOrdersByUser(uid:string){
+    this.ordersSubscription =this.orderService.getOrdersByUser(uid)
+    .subscribe(orders => orders.forEach((order) =>{
+      this.orders.push(order);
+    })
+  );
+  
+  }
 
+  private getPaypalOrdersByUser(uid:string){
+    this.paypalOrderSubscription =this.orderService.getPaypalOrdersByUser(uid)
+    .subscribe(orders => orders.forEach((order) =>{
+      this.orders.push(order);
+    })
+  );
+  
   }
 
   getUrl(){
@@ -49,7 +57,8 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
   }
 
  ngOnDestroy(){
-   this.ordersSusbcription.unsubscribe();
+   this.ordersSubscription.unsubscribe();
+   this.paypalOrderSubscription.unsubscribe();
    this.userSusbcription.unsubscribe();
  }
 
