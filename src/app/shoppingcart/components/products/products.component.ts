@@ -8,6 +8,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from '../../../shared/services/product.service';
 import { Subscription, Observable } from 'rxjs';
 
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',

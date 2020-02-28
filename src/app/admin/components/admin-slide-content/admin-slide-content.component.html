@@ -1,4 +1,6 @@
 
+<h1>Add an Offer</h1>
+
 <div class="row">
     <div class="col-6">
         <form #f="ngForm" (ngSubmit)="save(f.value)">
@@ -11,18 +13,40 @@
                 name="description"
                 type="text" 
                 class="form-control" required>
+                <div *ngIf="description.touched && description.invalid" class="alert alert-danger">
+                    <div *ngIf="description.errors.required">  A description is required.</div>
+                </div>
             </div>
         
             <div class="form-group">
                 <label for="">Image Url:</label>
                 <input
-                #description="ngModel"
+                #imageUrl="ngModel"
                 [(ngModel)]="slideInfo.imageUrl"
                 name="imageUrl"
                 type="text"
-                class="form-control" required>
+                class="form-control" required url>
+                <div *ngIf="imageUrl.touched && imageUrl.invalid" class="alert alert-danger">
+                    <div *ngIf="imageUrl.errors.required">  Image Url is required.</div>
+                    <div *ngIf="imageUrl.errors.url"> Please enter a valid Url.</div>
+                </div>
             </div>
-        
+
+            <div class="form-group">
+                <label for="">Offer details:</label>
+            <!--<input type="text" multiple="true" class="form-control">-->
+            <textarea 
+            type="text"
+            #details="ngModel"
+            [(ngModel)]="slideInfo.details"
+            name="details"
+            class="md-textarea form-control"
+            required 
+            ></textarea>
+            <div *ngIf="details.touched && details.invalid" class="alert alert-danger">
+                <div *ngIf="details.errors.required">The details are required.</div>
+            </div>
+        </div>
             <button 
             class="btn btn-primary"
             [disabled]="!f.valid"
@@ -33,18 +57,8 @@
 
     </div>
     <div class="col-6">
-        <div class="card">
-            <div class="carousel-caption">
-                {{slideInfo.description}}
-            </div>
-
-           
+        <div *ngIf="slideInfo.imageUrl"class="card">
             <img [src]="slideInfo.imageUrl" class="card-img-top" alt="slideInfo.description">
-           <!-- <div class="card-body">
-              <h5 class="card-title"></h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>-->
           </div>
     </div>
 </div>

@@ -13,12 +13,7 @@ import { SharedModule } from './shared/shared.module';
 import { ProductsComponent } from './shoppingcart/components/products/products.component';
 import { ShoppingModule } from './shoppingcart/shopping.module';
 import { PaypalCheckoutComponent } from './shoppingcart/components/paypal-checkout/paypal-checkout.component';
-
-
-
-
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
 
 
@@ -32,6 +27,7 @@ import { PaypalCheckoutComponent } from './shoppingcart/components/paypal-checko
     ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AdminModule,
     SharedModule,
     CoreModule,

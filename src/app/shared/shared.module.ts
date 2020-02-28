@@ -1,3 +1,5 @@
+
+
 import { AdminOrdersSourceGuard} from './services/admin-orders-source-guard.service';
 
 
@@ -24,6 +26,9 @@ import { UsersService } from './services/users.service';
 import { UrlIdentification } from './services/url-identification.service';
 import { UrlsService } from './services/urls.service';
 import { ProductsSlideComponent } from './components/products-slide/products-slide.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { CarouselHolderComponent } from './components/carousel-holder/carousel-holder-component';
+
 
 
 
@@ -34,7 +39,9 @@ import { ProductsSlideComponent } from './components/products-slide/products-sli
     ProductCardComponent,
     ProductQuantityComponent,
     ShowOrdersComponent,
-    ProductsSlideComponent
+    ProductsSlideComponent,
+    CarouselHolderComponent
+    
   ],
   imports: [
     CommonModule,
@@ -44,7 +51,8 @@ import { ProductsSlideComponent } from './components/products-slide/products-sli
     CustomFormsModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    RouterModule
+    RouterModule,
+    CarouselModule
    
   ],
   exports: [
@@ -58,7 +66,9 @@ import { ProductsSlideComponent } from './components/products-slide/products-sli
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     ShowOrdersComponent,
-    ProductsSlideComponent
+    ProductsSlideComponent,
+    CarouselModule,
+    CarouselHolderComponent
   ],
   providers:[
     AuthService,

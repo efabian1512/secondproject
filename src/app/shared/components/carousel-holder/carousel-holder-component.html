@@ -1,0 +1,41 @@
+
+  
+ 
+
+  <owl-carousel-o [options]="customOptions">
+   <ng-template *ngFor="let image of images" carouselSlide>
+   
+
+      
+      <div class="card mb-3" style="max-width: 100%;">
+        <div class="row no-gutters">
+          <div class="col-md-5">
+            <img [src]="image.imageUrl" class="card-img" height="250px" alt="...">
+           
+          </div>
+          <div class="col-md-7">
+            <div class="card-body">
+              <h5 class="card-title">{{image.description}}</h5>
+              <div class="card-text">
+
+                <div class="card custommize" style="width: 25rem;">
+                  <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">{{image.details}}</p>
+                    <a href="#" class="btn btn-primary">Take offer</a>
+                  </div>
+                </div>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+      
+     
+     
+       
+        
+   </ng-template> 
+   
+  </owl-carousel-o>
