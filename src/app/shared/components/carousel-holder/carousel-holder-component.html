@@ -7,30 +7,27 @@
    
 
       
-      <div class="card mb-3" style="max-width: 100%;">
+      <div class="card custommize mb-3" style="max-width: 100%; height:250px">
         <div class="row no-gutters">
           <div class="col-md-5">
-            <img [src]="image.imageUrl" class="card-img" height="250px" alt="...">
+            <!--<img [src]="image.imageUrl" class="card-img" height="250px" alt="...">-->
            
           </div>
           <div class="col-md-7">
-            <div class="card-body">
-              <h5 class="card-title">{{image.description}}</h5>
-              <div class="card-text">
-
-                <div class="card custommize" style="width: 25rem;">
-                  <div class="card-body">
-                    <h5 class="card-title"></h5>
-                    <p class="card-text">{{image.details}}</p>
-                    <a href="#" class="btn btn-primary">Take offer</a>
-                  </div>
-                </div>
-              </div>
-             
-            </div>
+        <div class="card custommize text-white">
+          <!--<img src="https://p1.pxfuel.com/preview/179/455/581/gladiolus-flower-blossom-nature.jpg" width="25rem" height="250px" class="card-img" alt="...">-->
+          <div class="card-img-overlay">
+            <h5 class="card-title">{{image.description}}</h5>
+            <p class="card-text">{{image.details}}</p>
+            <!--<p class="card-text">Last updated 3 mins ago</p>-->
+            <a href="#" class="btn btn-primary float-right pos">Take offer</a>
           </div>
         </div>
       </div>
+      </div>
+    </div>
+
+      
       
      
      

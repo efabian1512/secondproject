@@ -35,6 +35,8 @@ export class CarouselHolderComponent implements OnInit {
     autoplayTimeout:5000,
     autoplayHoverPause:true,
     navSpeed: 700,
+    //navText:["<div class='nav-btn prev-slide'></div>","<div class='nav-btn next-slide'></div>"],
+    //navText:["<i class='fas fa-arrow-circle-left'></i>","<i class='fas fa-arrow-circle-right'></i>"],
     navText: ['', ''],
     responsive: {
       0: {

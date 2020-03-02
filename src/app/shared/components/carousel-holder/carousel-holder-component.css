@@ -1,26 +1,21 @@
-.card{
-    background-color: #c1d62e;
-}
-
 .custommize{
-    border-color: cornsilk;
-    bottom: -60px;
-    right: -50px;
-}
 
-
-.img{
-    border-radius: 5px;
-    width: 50%;
-    height: 250px;
-    width: 60%;
-    float: left;
-    padding: 0;
-
+    border-top-right-radius: 0;
+    border-bottom-right-radius:0 ;
 
 }
 
-.btn-primary{
-    background-color: black;
-    font-weight: bold;
+.bg-dark{
+
+    border-top-left-radius: 0;
+    border-bottom-left-radius:0 ;
+
+}
+
+.card{
+    border-top-left-radius: 0;
+    border-bottom-left-radius:0 ;
+    border-top-right-radius: 0;
+    border-bottom-right-radius:0 ;
+
 }
