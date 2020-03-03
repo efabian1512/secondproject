@@ -1,21 +1,19 @@
-.custommize{
-
-    border-top-right-radius: 0;
-    border-bottom-right-radius:0 ;
-
-}
-
-.bg-dark{
-
-    border-top-left-radius: 0;
-    border-bottom-left-radius:0 ;
-
-}
-
 .card{
-    border-top-left-radius: 0;
-    border-bottom-left-radius:0 ;
-    border-top-right-radius: 0;
-    border-bottom-right-radius:0 ;
+     background-color: #ffecb8;
+   
+  
+     
+ }
+ 
+.size1{
+     font-size: 50px;
+ } 
 
-}
+ .size2{
+     font-size: 20px;
+     font-weight: bold;
+     color: black;
+    
+ }
+
+ 
